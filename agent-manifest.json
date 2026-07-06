@@ -1,0 +1,41 @@
+{
+  "name": "tj-text",
+  "display_name": "TJ-text",
+  "version": "0.2.0",
+  "description": "Generate Chinese/English interior design and commercial planning text books as HTML, PPTX, and PDF from structured JSON or an inspected PPTX.",
+  "entrypoints": {
+    "primary_instructions": "SKILL.md",
+    "generic_agent_instructions": "AGENTS.md",
+    "claude_instructions": "CLAUDE.md",
+    "openai_metadata": "agents/openai.yaml"
+  },
+  "capabilities": [
+    "inspect-pptx",
+    "generate-html",
+    "generate-pptx",
+    "generate-pdf",
+    "interior-design-textbook",
+    "commercial-planning-deck"
+  ],
+  "inputs": [
+    "project JSON based on assets/sample-project.json",
+    "optional PPTX for outline extraction",
+    "optional image paths for plans, renderings, materials, and content placeholders"
+  ],
+  "outputs": [
+    "HTML deck",
+    "PowerPoint PPTX",
+    "A3 landscape PDF"
+  ],
+  "requirements": {
+    "python": ">=3.9",
+    "pip": "requirements.txt",
+    "optional_pip": "requirements-optional.txt"
+  },
+  "commands": {
+    "install": "python3 -m pip install -r requirements.txt",
+    "inspect_pptx": "python3 scripts/inspect_pptx.py --pptx path/to/input.pptx --out output/outline.json --project-json output/project.json",
+    "build": "python3 scripts/build_textbook.py --data output/project.json --out-dir output/generated"
+  },
+  "license": "MIT"
+}

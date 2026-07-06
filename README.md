@@ -1,6 +1,6 @@
 # TJ-text
 
-TJ-text is a reusable Codex skill for generating Chinese/English interior design and commercial planning text decks. It was distilled from a company A3 landscape scheme text-book style and supports:
+TJ-text is a reusable multi-agent skill for generating Chinese/English interior design and commercial planning text decks. It was distilled from a company A3 landscape scheme text-book style and supports:
 
 - inspecting an existing PPTX and turning it into structured project JSON
 - generating HTML, PPTX, and PDF outputs from one JSON source
@@ -9,6 +9,14 @@ TJ-text is a reusable Codex skill for generating Chinese/English interior design
 - reserving editable planning-image placeholders on strategy/content pages
 
 The machine-readable skill name is `tj-text`. The display name is `TJ-text`.
+
+TJ-text can be used by Codex and by repository-based agents such as Open Cloud, Harness, Work Buddy, Claude-style agents, or any tool that can read a repo instruction file and run local Python scripts. Exact import UI varies by platform; the portable entry points are:
+
+- `SKILL.md`: primary skill instructions
+- `AGENTS.md`: generic agent instructions and commands
+- `CLAUDE.md`: Claude-compatible entry point
+- `agent-manifest.json`: machine-readable capability and command manifest
+- `agents/openai.yaml`: OpenAI/Codex UI metadata
 
 ## What It Produces
 
@@ -19,6 +27,22 @@ From a single project JSON file, TJ-text can generate:
 - printable A3 landscape file: `.pdf`
 
 The PDF exporter tries WeasyPrint first. If the local system is missing WeasyPrint native libraries, it falls back to ReportLab.
+
+## Install Dependencies
+
+Required Python packages:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+Optional closer HTML-to-PDF rendering:
+
+```bash
+python3 -m pip install -r requirements-optional.txt
+```
+
+If WeasyPrint native libraries are unavailable, TJ-text still generates PDF through the ReportLab fallback.
 
 ## Install For Codex
 
@@ -48,25 +72,44 @@ rm -rf .agents/skills/tj-text
 cp -R /tmp/TJ-text .agents/skills/tj-text
 ```
 
-## Requirements
+## Install For Other Agents
 
-Required:
+For agents that support repository skills or custom instruction repositories, connect this GitHub repo:
 
-- Python 3
-- `python-pptx`
-- `reportlab`
-
-Recommended:
-
-- `weasyprint` plus its native system libraries for closer HTML-to-PDF fidelity
-
-Install Python packages:
-
-```bash
-python3 -m pip install python-pptx reportlab weasyprint
+```text
+https://github.com/maicrobin1988-prog/TJ-text
 ```
 
-If WeasyPrint native libraries are unavailable, TJ-text still generates PDF through the ReportLab fallback.
+Use these settings when the platform asks for them:
+
+- Skill name: `tj-text`
+- Display name: `TJ-text`
+- Primary instruction file: `SKILL.md`
+- Generic instruction file: `AGENTS.md`
+- Manifest file: `agent-manifest.json`
+- Working directory: repository root
+- Required setup command: `python3 -m pip install -r requirements.txt`
+- Main build command: `python3 scripts/build_textbook.py --data output/project.json --out-dir output/generated`
+
+For platforms without a formal skill installer:
+
+1. Clone the repository into the agent workspace.
+2. Tell the agent to read `AGENTS.md` first, then `SKILL.md`.
+3. Allow the agent to run Python scripts from the repo root.
+4. Provide a project JSON or PPTX source file.
+
+Example prompt:
+
+```text
+Use the TJ-text skill in this repository. Read AGENTS.md and SKILL.md, inspect my PPTX, create a project JSON, then generate HTML, PPTX, and PDF outputs.
+```
+
+## Platform Notes
+
+- Open Cloud or OpenAI-style agents: use `SKILL.md` and `agents/openai.yaml` when a skill import flow is available.
+- Claude-style agents: use `CLAUDE.md` or `AGENTS.md` as the repo instruction file.
+- Harness / Work Buddy / generic work agents: use `agent-manifest.json` for capability discovery and `AGENTS.md` for executable instructions.
+- If a platform only supports pasted instructions, paste the content of `AGENTS.md` and include the repository URL.
 
 ## Inspect A PPTX
 
@@ -171,8 +214,13 @@ It avoids:
 ```text
 .
 ├── SKILL.md
+├── AGENTS.md
+├── CLAUDE.md
+├── agent-manifest.json
 ├── agents/openai.yaml
 ├── assets/sample-project.json
+├── requirements.txt
+├── requirements-optional.txt
 ├── references/content-architecture.md
 ├── references/design-system.md
 └── scripts/
@@ -182,4 +230,4 @@ It avoids:
 
 ## License
 
-No open-source license has been added yet. Contact the repository owner before redistributing or modifying beyond personal/internal installation.
+MIT. See `LICENSE`.

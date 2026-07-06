@@ -33,7 +33,7 @@ description: TJ-text generates reusable interior design and commercial planning 
 - Inspect an uploaded PPTX:
 
 ```bash
-python /Users/hhb_t/Claude/.agents/skills/tj-text/scripts/inspect_pptx.py \
+python scripts/inspect_pptx.py \
   --pptx path/to/input.pptx \
   --out path/to/outline.json \
   --project-json path/to/seed-project.json
@@ -42,7 +42,7 @@ python /Users/hhb_t/Claude/.agents/skills/tj-text/scripts/inspect_pptx.py \
 - Run:
 
 ```bash
-python /Users/hhb_t/Claude/.agents/skills/tj-text/scripts/build_textbook.py \
+python scripts/build_textbook.py \
   --data path/to/project.json \
   --out-dir path/to/output
 ```
