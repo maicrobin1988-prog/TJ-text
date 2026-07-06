@@ -1,0 +1,4 @@
+interface:
+  display_name: "TJ-text"
+  short_description: "复用同济室内方案文本册视觉系统并输出多格式文件"
+  default_prompt: "Use $tj-text to inspect an uploaded PPTX and generate a scheme text deck in HTML, PPTX, and PDF."

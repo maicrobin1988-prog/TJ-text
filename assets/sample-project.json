@@ -1,0 +1,79 @@
+{
+  "project": {
+    "slug": "sample-tj-text",
+    "title_cn": "某办公总部室内装修设计",
+    "title_en": "INTERIOR DECORATION DESIGN FOR OFFICE HEADQUARTERS",
+    "subtitle_cn": "方案文本",
+    "subtitle_en": "SCHEME TEXT",
+    "date": "2026.07",
+    "company_cn": "上海同济建筑室内设计工程有限公司",
+    "company_en": "SHANGHAI TONGJI ARCHITECTURAL INTERIOR DESIGN ENGINEERING CO., LTD."
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "title_cn": "某办公总部室内装修设计",
+      "title_en": "INTERIOR DECORATION DESIGN FOR OFFICE HEADQUARTERS",
+      "subtitle_cn": "方案文本",
+      "subtitle_en": "SCHEME TEXT"
+    },
+    {
+      "type": "toc",
+      "items": [
+        {"title_cn": "大厅", "title_en": "LOBBY"},
+        {"title_cn": "标准层", "title_en": "OFFICE"},
+        {"title_cn": "会议与服务", "title_en": "MEETING & SERVICE"}
+      ]
+    },
+    {
+      "type": "chapter",
+      "chapter_no": "01",
+      "title_cn": "大厅",
+      "title_en": "LOBBY",
+      "items": ["functional positioning / 功能落位", "plane function / 平面功能", "effect presentation / 效果呈现"]
+    },
+    {
+      "type": "plan",
+      "title_cn": "首层平面方案",
+      "title_en": "1F PLAN",
+      "items": [
+        {"title_cn": "接待展示区", "title_en": "RECEPTION & EXHIBITION", "color": "#dff7fb"},
+        {"title_cn": "会议谈话区", "title_en": "MEETING CONVERSATION", "color": "#ded6ff"},
+        {"title_cn": "服务配套", "title_en": "SERVICE SUPPORT", "color": "#cfcfcf"}
+      ]
+    },
+    {
+      "type": "journey",
+      "title_cn": "员工情感构建",
+      "title_en": "USER JOURNEY EXPERIENCE",
+      "items": [
+        {"title_cn": "到达", "title_en": "ARRIVAL"},
+        {"title_cn": "办公邻里", "title_en": "OFFICE NEIGHBORHOOD"},
+        {"title_cn": "专注工作", "title_en": "FOCUS ON WORK"},
+        {"title_cn": "短会同步", "title_en": "SHORT TERM SYNCHRONIZATION"},
+        {"title_cn": "茶水休整", "title_en": "TEA TRIMMING"}
+      ]
+    },
+    {
+      "type": "rendering",
+      "title_cn": "电梯厅效果图",
+      "title_en": "RENDERING"
+    },
+    {
+      "type": "materials",
+      "title_cn": "空间用材",
+      "title_en": "MATERIAL",
+      "items": [
+        {"title_cn": "吊顶 / 金属板"},
+        {"title_cn": "立面 / 木饰面、金属板"},
+        {"title_cn": "地面 / 磨石、PVC"},
+        {"title_cn": "柜门 / 穿孔金属"},
+        {"title_cn": "隔断 / 双玻"},
+        {"title_cn": "墙面 / 书写白板"}
+      ]
+    },
+    {
+      "type": "thanks"
+    }
+  ]
+}
