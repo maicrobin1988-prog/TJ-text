@@ -56,6 +56,36 @@ def item_title(item: Any, key: str = "title_cn") -> str:
     return str(item)
 
 
+def html_lines(value: Any) -> str:
+    return "<br>".join(esc(x) for x in str(value or "").splitlines() if x.strip())
+
+
+def content_layout(slide: Dict[str, Any], index: int) -> str:
+    allowed = ["statement", "metrics", "matrix", "split", "timeline"]
+    explicit = str(slide.get("layout") or "").strip().lower()
+    if explicit in allowed:
+        return explicit
+    return allowed[(index - 1) % len(allowed)]
+
+
+def hex_to_rgb(value: str, fallback: RGBColor = PALE_BLUE) -> RGBColor:
+    value = str(value or "").strip().lstrip("#")
+    if len(value) != 6:
+        return fallback
+    try:
+        return RGBColor(int(value[0:2], 16), int(value[2:4], 16), int(value[4:6], 16))
+    except ValueError:
+        return fallback
+
+
+def metric_parts(item: Any, index: int) -> tuple[str, str]:
+    label = item_title(item, "title_cn")
+    match = re.search(r"(\d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?\s*(?:%|㎡|m²|元|天|万|亿|F|层)?)", label)
+    if match:
+        return match.group(1).strip(), label
+    return f"{index:02d}", label
+
+
 def css() -> str:
     return """
 @page { size: 420mm 297mm; margin: 0; }
@@ -64,13 +94,18 @@ body { margin: 0; background: #e9ecef; font-family: Arial, "PingFang SC", "Micro
 .slide { position: relative; width: 420mm; height: 297mm; overflow: hidden; background: #fbfcfc; page-break-after: always; }
 .slide::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
 .gradient { position: absolute; width: 210mm; height: 210mm; right: -20mm; bottom: -32mm; border-radius: 50%; background: radial-gradient(circle at 40% 45%, rgba(49,92,255,.28), rgba(142,122,230,.16) 35%, rgba(135,200,232,.12) 55%, rgba(255,255,255,0) 72%); filter: blur(18px); }
-.header { position: absolute; top: 22mm; right: 24mm; font-size: 18pt; letter-spacing: .02em; font-weight: 300; }
-.cover-title { position: absolute; top: 28mm; left: 28mm; width: 190mm; }
-.cover-title h1 { margin: 0; font-size: 35pt; line-height: 1.16; font-weight: 300; letter-spacing: .02em; }
+.header { position: absolute; top: 22mm; right: 24mm; width: 150mm; text-align: right; font-size: 18pt; letter-spacing: .02em; font-weight: 300; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cover .gradient { width: 240mm; height: 240mm; right: -34mm; bottom: -46mm; opacity: .92; }
+.cover-title { position: absolute; top: 30mm; left: 28mm; width: 255mm; }
+.cover-title .eyebrow { color: #777; font-size: 17pt; letter-spacing: .10em; margin-bottom: 10mm; }
+.cover-title h1 { margin: 0; font-size: 49pt; line-height: 1.02; font-weight: 500; letter-spacing: 0; max-width: 245mm; }
 .rule { width: 184mm; height: .3mm; background: #111; margin: 7mm 0; }
+.cover .rule { width: 112mm; height: .45mm; margin: 12mm 0 9mm; }
 .cover-cn { font-size: 29pt; line-height: 1.18; font-weight: 300; }
-.cover-sub { margin-top: 18mm; font-size: 22pt; }
-.cover-sub small { display: block; margin-top: 3mm; color: #555; font-size: 14pt; letter-spacing: .04em; }
+.cover-sub { max-width: 210mm; font-size: 20pt; line-height: 1.32; color: #333; }
+.cover-sub small { display: block; margin-top: 3mm; color: #777; font-size: 12pt; letter-spacing: .04em; }
+.cover-points { position: absolute; left: 28mm; bottom: 52mm; display: flex; gap: 9mm; max-width: 260mm; }
+.cover-point { border-left: .45mm solid #315cff; padding-left: 4mm; width: 72mm; font-size: 11pt; line-height: 1.35; color: #333; }
 .brand { position: absolute; left: 28mm; bottom: 18mm; font-size: 8pt; color: #555; }
 .date { position: absolute; left: 28mm; bottom: 33mm; font-size: 14pt; }
 .toc { position: absolute; right: 78mm; top: 118mm; display: flex; gap: 18mm; color: #555; }
@@ -104,14 +139,30 @@ body { margin: 0; background: #e9ecef; font-family: Arial, "PingFang SC", "Micro
 .mat-tile img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
 .pill { position: absolute; top: 8mm; left: 14mm; background: white; border-radius: 10mm; padding: 1.5mm 6mm; font-size: 11pt; box-shadow: 0 0 0 .2mm rgba(0,0,0,.08); }
 .mat-summary { position: absolute; left: 18mm; bottom: 24mm; font-size: 15pt; line-height: 1.45; }
-.content-title { position: absolute; left: 24mm; top: 42mm; width: 170mm; }
-.content-title .en { color: #777; font-size: 15pt; letter-spacing: .08em; margin-bottom: 4mm; }
-.content-title h1 { margin: 0; font-size: 24pt; line-height: 1.2; font-weight: 300; }
-.content-lead { position: absolute; left: 24mm; top: 92mm; width: 180mm; color: #555; font-size: 15pt; line-height: 1.55; }
-.content-grid { position: absolute; left: 225mm; right: 24mm; top: 78mm; display: grid; grid-template-columns: 1fr; gap: 8mm; }
-.content-item { border-top: .35mm solid #d7dbe2; padding-top: 4mm; font-size: 14pt; line-height: 1.35; }
+.content-title { position: absolute; left: 24mm; top: 42mm; width: 205mm; }
+.content-title .en { color: #777; font-size: 14pt; letter-spacing: .08em; margin-bottom: 4mm; }
+.content-title h1 { margin: 0; font-size: 32pt; line-height: 1.12; font-weight: 450; }
+.content-lead { position: absolute; left: 24mm; top: 102mm; width: 188mm; color: #555; font-size: 17pt; line-height: 1.48; }
+.content-grid { position: absolute; left: 230mm; right: 24mm; top: 72mm; display: grid; grid-template-columns: 1fr; gap: 8mm; }
+.content-item { border-top: .35mm solid #d7dbe2; padding-top: 4mm; font-size: 15pt; line-height: 1.34; }
 .content-item .idx { color: #315cff; font-size: 12pt; margin-right: 3mm; }
 .content-item small { display: block; color: #888; font-size: 9pt; margin-top: 1mm; }
+.content-statement .content-title { top: 48mm; width: 345mm; }
+.content-statement .content-title h1 { font-size: 42pt; max-width: 310mm; }
+.statement-lead { position: absolute; left: 24mm; top: 128mm; width: 210mm; font-size: 21pt; line-height: 1.42; color: #333; }
+.statement-points { position: absolute; right: 25mm; bottom: 34mm; width: 125mm; display: grid; gap: 8mm; }
+.statement-point { border-top: .4mm solid #111; padding-top: 4mm; font-size: 15pt; line-height: 1.32; }
+.metrics-row { position: absolute; left: 24mm; right: 24mm; top: 126mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8mm; }
+.metric { border-top: .45mm solid #315cff; min-height: 50mm; padding-top: 5mm; }
+.metric b { display: block; font-size: 28pt; font-weight: 500; line-height: 1.05; }
+.metric span { display: block; margin-top: 4mm; color: #555; font-size: 12pt; line-height: 1.35; }
+.matrix-grid { position: absolute; left: 225mm; top: 70mm; width: 166mm; height: 178mm; display: grid; grid-template-columns: repeat(2, 1fr); gap: 7mm; }
+.matrix-cell { background: rgba(223,247,251,.55); border-top: .45mm solid #315cff; padding: 7mm; font-size: 15pt; line-height: 1.32; }
+.matrix-cell:nth-child(2), .matrix-cell:nth-child(3) { background: rgba(222,214,255,.42); }
+.timeline { position: absolute; left: 32mm; right: 32mm; top: 158mm; display: flex; justify-content: space-between; border-top: 1.1mm solid #315cff; }
+.time-node { width: 62mm; padding-top: 9mm; position: relative; font-size: 14pt; line-height: 1.35; }
+.time-node::before { content: ""; position: absolute; top: -4mm; left: 0; width: 8mm; height: 8mm; border-radius: 50%; background: #141b42; }
+.time-node b { display: block; color: #315cff; font-size: 14pt; margin-bottom: 2mm; }
 .thanks { position: absolute; left: 132mm; top: 112mm; display: grid; grid-template-columns: 84mm 115mm; column-gap: 18mm; align-items: center; }
 .thanks-en { color: #888; font-size: 33pt; line-height: 1.1; font-weight: 300; text-align: center; }
 .thanks-cn { font-size: 43pt; font-weight: 800; margin-top: 12mm; text-align: center; }
@@ -127,21 +178,26 @@ def render_image_box(raw: Optional[str], base: Path, klass: str, label: str) -> 
     return f'<div class="{klass} placeholder">{esc(label)} TBD</div>'
 
 
-def render_slide(slide: Dict[str, Any], project: Dict[str, Any], base: Path) -> str:
+def render_slide(slide: Dict[str, Any], project: Dict[str, Any], base: Path, index: int) -> str:
     typ = slide.get("type", "rendering")
     title_cn = slide.get("title_cn", project.get("title_cn", ""))
     title_en = slide.get("title_en", project.get("title_en", ""))
 
     if typ == "cover":
+        points = "".join(
+            f'<div class="cover-point">{esc(item_title(x, "title_cn"))}</div>'
+            for x in slide.get("items", [])[:3]
+        )
         return f"""
 <section class="slide cover" data-title="{esc(title_cn)}">
   <div class="gradient"></div>
   <div class="cover-title">
-    <h1>{esc(title_en)}</h1>
+    <div class="eyebrow">{esc(title_en)}</div>
+    <h1>{html_lines(title_cn)}</h1>
     <div class="rule"></div>
-    <div class="cover-cn">{esc(title_cn)}</div>
-    <div class="cover-sub">{esc(slide.get("subtitle_cn", project.get("subtitle_cn", "")))}<small>{esc(slide.get("subtitle_en", project.get("subtitle_en", "")))}</small></div>
+    <div class="cover-sub">{html_lines(slide.get("subtitle_cn", project.get("subtitle_cn", "")))}<small>{esc(slide.get("subtitle_en", project.get("subtitle_en", "")))}</small></div>
   </div>
+  <div class="cover-points">{points}</div>
   <div class="date">{esc(project.get("date", ""))}</div>
   <div class="brand">{esc(project.get("company_cn", ""))}<br>{esc(project.get("company_en", ""))}</div>
 </section>"""
@@ -214,18 +270,45 @@ def render_slide(slide: Dict[str, Any], project: Dict[str, Any], base: Path) -> 
     if typ == "content":
         items = slide.get("items", [])
         lead = esc(item_title(items[0], "title_cn")) if items else ""
-        rows = []
-        for i, item in enumerate(items[1:7], 1):
-            rows.append(
-                f'<div class="content-item"><span class="idx">{i:02d}</span>{esc(item_title(item, "title_cn"))}<small>{esc(item_title(item, "title_en"))}</small></div>'
+        layout = content_layout(slide, index)
+        title = f'<div class="content-title"><div class="en">{esc(title_en)}</div><h1>{html_lines(title_cn)}</h1></div>'
+        if layout == "statement":
+            points = "".join(
+                f'<div class="statement-point"><span class="idx">{i:02d}</span>{esc(item_title(item, "title_cn"))}</div>'
+                for i, item in enumerate(items[1:5], 1)
             )
+            body = f'{title}<div class="statement-lead">{lead}</div><div class="statement-points">{points}</div>'
+        elif layout == "metrics":
+            metric_cards = []
+            for i, item in enumerate(items[:4], 1):
+                value, label = metric_parts(item, i)
+                metric_cards.append(f'<div class="metric"><b>{esc(value)}</b><span>{esc(label)}</span></div>')
+            metrics = "".join(metric_cards)
+            body = f'{title}<div class="metrics-row">{metrics}</div>'
+        elif layout == "matrix":
+            cells = "".join(
+                f'<div class="matrix-cell"><span class="idx">{i:02d}</span><br>{esc(item_title(item, "title_cn"))}</div>'
+                for i, item in enumerate(items[1:5], 1)
+            )
+            body = f'{title}<div class="content-lead">{lead}</div><div class="matrix-grid">{cells}</div>'
+        elif layout == "timeline":
+            nodes = "".join(
+                f'<div class="time-node"><b>{i:02d}</b>{esc(item_title(item, "title_cn"))}</div>'
+                for i, item in enumerate(items[1:6], 1)
+            )
+            body = f'{title}<div class="content-lead">{lead}</div><div class="timeline">{nodes}</div>'
+        else:
+            rows = []
+            for i, item in enumerate(items[1:7], 1):
+                rows.append(
+                    f'<div class="content-item"><span class="idx">{i:02d}</span>{esc(item_title(item, "title_cn"))}<small>{esc(item_title(item, "title_en"))}</small></div>'
+                )
+            body = f'{title}<div class="content-lead">{lead}</div><div class="content-grid">{"".join(rows)}</div>'
         return f"""
-<section class="slide content" data-title="{esc(title_cn)}">
+<section class="slide content content-{layout}" data-title="{esc(title_cn)}">
   {header}
   <div class="gradient"></div>
-  <div class="content-title"><div class="en">{esc(title_en)}</div><h1>{esc(title_cn)}</h1></div>
-  <div class="content-lead">{lead}</div>
-  <div class="content-grid">{''.join(rows)}</div>
+  {body}
 </section>"""
 
     if typ == "thanks":
@@ -248,7 +331,7 @@ def render_slide(slide: Dict[str, Any], project: Dict[str, Any], base: Path) -> 
 def build_html(data: Dict[str, Any], out_html: Path, data_base: Path) -> None:
     project = data.get("project", {})
     slides = data.get("slides", [])
-    body = "\n".join(render_slide(slide, project, data_base) for slide in slides)
+    body = "\n".join(render_slide(slide, project, data_base, index) for index, slide in enumerate(slides, 1))
     doc = f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -303,7 +386,7 @@ def add_picture_or_placeholder(slide, raw: Optional[str], base: Path, x, y, w, h
 
 
 def ppt_header(slide, title_en: str, title_cn: str):
-    add_textbox(slide, Inches(9.8), Inches(0.38), Inches(3.2), Inches(0.35), f"{title_en} / {title_cn}", 13, INK)
+    add_textbox(slide, Inches(9.55), Inches(0.38), Inches(3.45), Inches(0.35), str(title_en or title_cn)[:42], 12, INK)
 
 
 def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
@@ -313,7 +396,7 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
     blank = prs.slide_layouts[6]
     project = data.get("project", {})
 
-    for spec in data.get("slides", []):
+    for index, spec in enumerate(data.get("slides", []), 1):
         slide = prs.slides.add_slide(blank)
         typ = spec.get("type", "rendering")
         title_cn = spec.get("title_cn", project.get("title_cn", ""))
@@ -322,10 +405,15 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
         if typ in ("cover", "chapter"):
             add_rect(slide, Inches(7.2), Inches(1.2), Inches(5.3), Inches(5.3), PALE_BLUE, 35)
             if typ == "cover":
-                add_textbox(slide, Inches(0.75), Inches(0.65), Inches(6.6), Inches(1.7), spec.get("title_en", project.get("title_en")), 28)
-                add_rect(slide, Inches(0.75), Inches(2.35), Inches(5.4), Inches(0.02), INK)
-                add_textbox(slide, Inches(0.75), Inches(2.55), Inches(6.5), Inches(0.9), spec.get("title_cn", project.get("title_cn")), 24)
-                add_textbox(slide, Inches(0.75), Inches(4.05), Inches(4), Inches(0.6), spec.get("subtitle_cn", project.get("subtitle_cn")), 19)
+                add_textbox(slide, Inches(0.75), Inches(0.55), Inches(6.2), Inches(0.35), spec.get("title_en", project.get("title_en")), 13, GRAY)
+                add_textbox(slide, Inches(0.75), Inches(1.05), Inches(7.6), Inches(1.55), spec.get("title_cn", project.get("title_cn")), 33, INK, True)
+                add_rect(slide, Inches(0.75), Inches(2.8), Inches(3.7), Inches(0.03), INK)
+                add_textbox(slide, Inches(0.75), Inches(3.05), Inches(7.2), Inches(0.75), spec.get("subtitle_cn", project.get("subtitle_cn")), 17, INK)
+                x = Inches(0.75)
+                for item in spec.get("items", [])[:3]:
+                    add_rect(slide, x, Inches(5.75), Inches(0.02), Inches(0.55), BLUE)
+                    add_textbox(slide, x + Inches(0.12), Inches(5.72), Inches(2.1), Inches(0.52), item_title(item, "title_cn"), 9, INK)
+                    x += Inches(2.35)
                 add_textbox(slide, Inches(0.75), Inches(6.75), Inches(2), Inches(0.3), project.get("date", ""), 11)
                 add_textbox(slide, Inches(0.75), Inches(7.02), Inches(5), Inches(0.25), project.get("company_cn", ""), 6, GRAY)
             else:
@@ -379,19 +467,61 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
             continue
 
         if typ == "content":
+            layout = content_layout(spec, index)
             ppt_header(slide, title_en, title_cn)
             add_rect(slide, Inches(8.3), Inches(1.2), Inches(3.8), Inches(3.8), PALE_BLUE, 45)
-            add_textbox(slide, Inches(0.7), Inches(1.05), Inches(4.8), Inches(0.35), title_en, 11, GRAY)
-            add_textbox(slide, Inches(0.7), Inches(1.45), Inches(6.0), Inches(0.75), title_cn, 22)
             items = spec.get("items", [])
-            if items:
-                add_textbox(slide, Inches(0.7), Inches(2.6), Inches(5.7), Inches(1.2), item_title(items[0], "title_cn"), 14, GRAY)
-            y = Inches(1.75)
-            for i, item in enumerate(items[1:7], 1):
-                add_rect(slide, Inches(7.05), y, Inches(4.9), Inches(0.01), LINE)
-                add_textbox(slide, Inches(7.05), y + Inches(0.12), Inches(0.45), Inches(0.25), f"{i:02d}", 9, BLUE)
-                add_textbox(slide, Inches(7.55), y + Inches(0.08), Inches(4.2), Inches(0.42), item_title(item, "title_cn"), 12)
-                y += Inches(0.72)
+            add_textbox(slide, Inches(0.7), Inches(0.95), Inches(5.2), Inches(0.32), title_en, 10, GRAY)
+            add_textbox(slide, Inches(0.7), Inches(1.34), Inches(6.5), Inches(0.95), title_cn, 24, INK, True)
+            lead = item_title(items[0], "title_cn") if items else ""
+            if layout == "statement":
+                add_textbox(slide, Inches(0.7), Inches(2.8), Inches(6.2), Inches(1.25), lead, 17, INK)
+                y = Inches(4.65)
+                for i, item in enumerate(items[1:5], 1):
+                    add_rect(slide, Inches(7.2), y, Inches(4.5), Inches(0.02), INK)
+                    add_textbox(slide, Inches(7.2), y + Inches(0.16), Inches(0.5), Inches(0.25), f"{i:02d}", 9, BLUE)
+                    add_textbox(slide, Inches(7.75), y + Inches(0.1), Inches(4.0), Inches(0.45), item_title(item, "title_cn"), 12)
+                    y += Inches(0.62)
+            elif layout == "metrics":
+                x = Inches(0.75)
+                for i, item in enumerate(items[:4], 1):
+                    add_rect(slide, x, Inches(3.25), Inches(2.6), Inches(0.03), BLUE)
+                    value, label = metric_parts(item, i)
+                    add_textbox(slide, x, Inches(3.45), Inches(2.5), Inches(0.65), value, 22, INK, True)
+                    add_textbox(slide, x, Inches(4.15), Inches(2.55), Inches(0.75), label, 10, GRAY)
+                    x += Inches(3.05)
+            elif layout == "matrix":
+                if lead:
+                    add_textbox(slide, Inches(0.7), Inches(2.65), Inches(5.6), Inches(1.1), lead, 14, GRAY)
+                positions = [(7.05, 1.75), (9.6, 1.75), (7.05, 4.0), (9.6, 4.0)]
+                for i, item in enumerate(items[1:5], 1):
+                    x, y = positions[i - 1]
+                    add_rect(slide, Inches(x), Inches(y), Inches(2.25), Inches(1.55), PALE_LAV if i in (2, 3) else PALE_BLUE, 15)
+                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.18), Inches(0.5), Inches(0.25), f"{i:02d}", 9, BLUE)
+                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.55), Inches(1.9), Inches(0.65), item_title(item, "title_cn"), 11)
+            elif layout == "timeline":
+                if lead:
+                    add_textbox(slide, Inches(0.7), Inches(2.6), Inches(5.6), Inches(0.8), lead, 13, GRAY)
+                add_rect(slide, Inches(0.95), Inches(4.55), Inches(11.2), Inches(0.04), BLUE)
+                timeline_items = items[1:6]
+                step = 10.4 / max(len(timeline_items) - 1, 1)
+                for i, item in enumerate(timeline_items, 1):
+                    x = Inches(0.95 + (i - 1) * step)
+                    dot = slide.shapes.add_shape(MSO_SHAPE.OVAL, x, Inches(4.43), Inches(0.23), Inches(0.23))
+                    dot.fill.solid()
+                    dot.fill.fore_color.rgb = RGBColor(20, 27, 66)
+                    dot.line.fill.background()
+                    add_textbox(slide, x, Inches(4.85), Inches(1.8), Inches(0.25), f"{i:02d}", 9, BLUE)
+                    add_textbox(slide, x, Inches(5.12), Inches(1.9), Inches(0.65), item_title(item, "title_cn"), 9, INK)
+            else:
+                if lead:
+                    add_textbox(slide, Inches(0.7), Inches(2.6), Inches(5.7), Inches(1.2), lead, 14, GRAY)
+                y = Inches(1.75)
+                for i, item in enumerate(items[1:7], 1):
+                    add_rect(slide, Inches(7.05), y, Inches(4.9), Inches(0.01), LINE)
+                    add_textbox(slide, Inches(7.05), y + Inches(0.12), Inches(0.45), Inches(0.25), f"{i:02d}", 9, BLUE)
+                    add_textbox(slide, Inches(7.55), y + Inches(0.08), Inches(4.2), Inches(0.42), item_title(item, "title_cn"), 12)
+                    y += Inches(0.72)
             continue
 
         if typ == "thanks":
@@ -435,7 +565,9 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
         c.drawString(mm(x), page_h - mm(y), str(value or ""))
 
     def header(spec):
-        text(320, 24, f"{spec.get('title_en', '')} / {spec.get('title_cn', '')}", 16)
+        c.setFillColor(colors.black)
+        c.setFont("Helvetica", 14)
+        c.drawRightString(mm(396), page_h - mm(24), str(spec.get("title_en") or spec.get("title_cn") or "")[:42])
 
     def placeholder(x, y, w, h, label):
         c.setFillColor(colors.HexColor("#e8ecef"))
@@ -452,7 +584,7 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
         else:
             placeholder(x, y, w, h, label)
 
-    for spec in data.get("slides", []):
+    for index, spec in enumerate(data.get("slides", []), 1):
         typ = spec.get("type", "rendering")
         c.setFillColor(colors.HexColor("#fbfcfc"))
         c.rect(0, 0, page_w, page_h, fill=1, stroke=0)
@@ -462,20 +594,22 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
         if typ == "cover":
             c.setFont("Helvetica", 35)
             c.setFillColor(colors.black)
-            y = 34
-            for line in str(spec.get("title_en", project.get("title_en", ""))).split(" "):
-                pass
-            title_en = str(spec.get("title_en", project.get("title_en", "")))
-            lines = [title_en[i:i + 31] for i in range(0, len(title_en), 31)]
-            for line in lines[:4]:
-                text(28, y, line, 34, font="Helvetica")
-                y += 16
+            text(28, 34, spec.get("title_en", project.get("title_en", "")), 16, colors.HexColor("#777777"), "Helvetica")
+            y = 62
+            for line in str(spec.get("title_cn", project.get("title_cn", ""))).splitlines()[:3]:
+                text(28, y, line, 44)
+                y += 22
             c.setStrokeColor(colors.black)
             c.line(mm(28), page_h - mm(y), mm(200), page_h - mm(y))
-            y += 16
-            text(28, y, spec.get("title_cn", project.get("title_cn", "")), 30)
-            y += 18
+            y += 14
             text(28, y, spec.get("subtitle_cn", project.get("subtitle_cn", "")), 22)
+            x = 28
+            for item in spec.get("items", [])[:3]:
+                c.setStrokeColor(colors.HexColor("#315cff"))
+                c.setLineWidth(mm(0.45))
+                c.line(mm(x), page_h - mm(244), mm(x), page_h - mm(260))
+                text(x + 4, 252, item_title(item, "title_cn"), 10)
+                x += 70
             text(28, 270, project.get("date", ""), 14)
             text(28, 284, project.get("company_cn", ""), 8)
             c.showPage()
@@ -545,18 +679,68 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
             continue
 
         if typ == "content":
-            text(24, 54, spec.get("title_en", ""), 13, colors.HexColor("#777777"), "Helvetica")
-            text(24, 72, spec.get("title_cn", ""), 25)
+            layout = content_layout(spec, index)
+            text(24, 50, spec.get("title_en", ""), 13, colors.HexColor("#777777"), "Helvetica")
+            title_lines = str(spec.get("title_cn", "")).splitlines() or [str(spec.get("title_cn", ""))]
+            y_title = 68
+            for line in title_lines[:2]:
+                text(24, y_title, line, 30)
+                y_title += 14
             items = spec.get("items", [])
-            if items:
-                text(24, 112, item_title(items[0], "title_cn"), 15, colors.HexColor("#555555"))
-            y = 88
-            for i, item in enumerate(items[1:7], 1):
-                c.setStrokeColor(colors.HexColor("#d7dbe2"))
-                c.line(mm(225), page_h - mm(y), mm(390), page_h - mm(y))
-                text(225, y + 11, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
-                text(242, y + 11, item_title(item, "title_cn"), 13)
-                y += 24
+            lead = item_title(items[0], "title_cn") if items else ""
+            if layout == "statement":
+                text(24, 128, lead, 20, colors.HexColor("#333333"))
+                y = 166
+                for i, item in enumerate(items[1:5], 1):
+                    c.setStrokeColor(colors.black)
+                    c.line(mm(250), page_h - mm(y), mm(390), page_h - mm(y))
+                    text(250, y + 10, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
+                    text(267, y + 10, item_title(item, "title_cn"), 13)
+                    y += 26
+            elif layout == "metrics":
+                x = 24
+                for i, item in enumerate(items[:4], 1):
+                    c.setStrokeColor(colors.HexColor("#315cff"))
+                    c.setLineWidth(mm(0.45))
+                    c.line(mm(x), page_h - mm(126), mm(x + 80), page_h - mm(126))
+                    value, label = metric_parts(item, i)
+                    text(x, 148, value, 28)
+                    text(x, 166, label, 11, colors.HexColor("#555555"))
+                    x += 96
+            elif layout == "matrix":
+                if lead:
+                    text(24, 116, lead, 15, colors.HexColor("#555555"))
+                positions = [(225, 72), (310, 72), (225, 160), (310, 160)]
+                for i, item in enumerate(items[1:5], 1):
+                    x, y = positions[i - 1]
+                    c.setFillColor(colors.HexColor("#dff7fb" if i in (1, 4) else "#ded6ff"))
+                    c.rect(mm(x), page_h - mm(y + 62), mm(76), mm(62), fill=1, stroke=0)
+                    text(x + 6, y + 16, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
+                    text(x + 6, y + 34, item_title(item, "title_cn"), 13)
+            elif layout == "timeline":
+                if lead:
+                    text(24, 112, lead, 15, colors.HexColor("#555555"))
+                c.setStrokeColor(colors.HexColor("#315cff"))
+                c.setLineWidth(mm(1))
+                c.line(mm(32), page_h - mm(166), mm(388), page_h - mm(166))
+                timeline_items = items[1:6]
+                step = 330 / max(len(timeline_items) - 1, 1)
+                for i, item in enumerate(timeline_items, 1):
+                    x = 32 + (i - 1) * step
+                    c.setFillColor(colors.HexColor("#141b42"))
+                    c.circle(mm(x), page_h - mm(166), mm(3.4), fill=1, stroke=0)
+                    text(x, 186, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
+                    text(x, 198, item_title(item, "title_cn"), 11)
+            else:
+                if lead:
+                    text(24, 112, lead, 15, colors.HexColor("#555555"))
+                y = 88
+                for i, item in enumerate(items[1:7], 1):
+                    c.setStrokeColor(colors.HexColor("#d7dbe2"))
+                    c.line(mm(225), page_h - mm(y), mm(390), page_h - mm(y))
+                    text(225, y + 11, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
+                    text(242, y + 11, item_title(item, "title_cn"), 13)
+                    y += 24
             c.showPage()
             continue
 

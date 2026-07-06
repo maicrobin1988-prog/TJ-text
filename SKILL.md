@@ -19,6 +19,8 @@ description: TJ-text generates reusable interior design and commercial planning 
 
 - Keep the base format as A3 landscape: 420mm x 297mm for HTML/PDF and 16:9 widescreen for PPTX.
 - Preserve the company text-book feeling: sparse white space, thin typography, bilingual section labels, cool blue/violet light gradients, large renderings, and restrained analysis diagrams.
+- Make the first page decisive: large Chinese project/theme title, concise subtitle, and short strategic points. Avoid tiny or overly loose cover typography.
+- For text-heavy planning decks, rotate content layouts (`statement`, `metrics`, `matrix`, `split`, `timeline`) instead of repeating one page composition.
 - Use Chinese as the main content language. Use English as a secondary label layer, not as a second full paragraph.
 - Prefer one clear point per page. If a page needs more than six content items, split it.
 - Never invent project facts. Mark missing data with `TBD` placeholders and ask for drawings/renderings/material lists when needed.

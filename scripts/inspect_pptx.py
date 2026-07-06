@@ -29,6 +29,15 @@ def clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def has_cjk(value: str) -> bool:
+    return bool(re.search(r"[\u4e00-\u9fff]", value or ""))
+
+
+def is_english_label(value: str) -> bool:
+    value = value or ""
+    return bool(value) and not has_cjk(value) and bool(re.search(r"[A-Za-z]", value))
+
+
 def guess_type(index: int, total: int, texts: List[str], image_count: int) -> str:
     joined = " ".join(texts).lower()
     if index == 1:
@@ -98,19 +107,36 @@ def inspect_pptx(pptx: Path) -> Dict[str, Any]:
 def make_project_seed(summary: Dict[str, Any], pptx: Path) -> Dict[str, Any]:
     title = pptx.stem
     slides = []
+    content_layouts = ["statement", "metrics", "matrix", "split", "timeline"]
+    content_count = 0
     for slide in summary["slides"]:
         texts = slide["texts"]
         title_text = texts[0] if texts else f"第{slide['index']}页"
         slide_type = slide["type_guess"]
-        slides.append(
-            {
-                "type": slide_type,
-                "title_cn": title_text,
-                "title_en": "TJ-TEXT",
-                "items": [{"title_cn": x} for x in texts[1:7]],
-                "notes": f"Seeded from source slide {slide['index']}; image_count={slide['image_count']}. Replace image paths manually when generating final output.",
-            }
-        )
+        title_en = "TJ-TEXT"
+        items_start = 1
+        if slide_type == "content" and len(texts) >= 2 and is_english_label(texts[0]) and has_cjk(texts[1]):
+            title_en = texts[0]
+            title_text = texts[1]
+            items_start = 2
+        spec: Dict[str, Any] = {
+            "type": slide_type,
+            "title_cn": title_text,
+            "title_en": title_en,
+            "items": [{"title_cn": x} for x in texts[items_start:items_start + 8]],
+            "notes": f"Seeded from source slide {slide['index']}; image_count={slide['image_count']}. Replace image paths manually when generating final output.",
+        }
+        if slide_type == "cover":
+            title_lines = texts[:2] if len(texts) >= 2 else texts[:1]
+            spec["title_cn"] = "\n".join(title_lines) if title_lines else title
+            spec["title_en"] = "TJ-TEXT"
+            spec["subtitle_cn"] = texts[2] if len(texts) >= 3 else ""
+            spec["subtitle_en"] = texts[3] if len(texts) >= 4 else "SCHEME TEXT"
+            spec["items"] = [{"title_cn": x} for x in texts[4:8]]
+        elif slide_type == "content":
+            spec["layout"] = content_layouts[content_count % len(content_layouts)]
+            content_count += 1
+        slides.append(spec)
     return {
         "project": {
             "slug": re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff]+", "-", title).strip("-") or "tj-text-project",

@@ -63,10 +63,13 @@ Use this when matching the company's common interior scheme text-book language, 
 11. Material page: six image tiles, white pill callouts with leader lines, concise material summary at left.
 12. Communication optimization page: dark gray/black background, before-after renderings with gray annotation blocks.
 13. Closing page: sparse white field, large gray `THANK YOU`, heavy black `谢谢`, project info and logo at right.
+14. Strategy content page: large Chinese thesis, small English category label, and one of several structures: statement with proof points, metric row, 2x2 matrix, split explanation, or timeline.
 
 ## Composition Rules
 
 - Keep strong asymmetry. Most pages have a heavy image/diagram area and a quiet label zone.
+- On text-heavy strategy pages, do not make all pages share the same two-column composition. Rotate statement, metric, matrix, split, and timeline structures while preserving the same typography, margins, and cool accent system.
+- The first page/cover must carry the main project subject clearly: large Chinese title, concise subtitle, and 2-3 short strategic points. Do not let the title become a small label.
 - Do not center everything. Use large empty fields.
 - Let renderings breathe; avoid explanatory boxes on top unless the page is explicitly a material/callout page.
 - Use rounded labels only for small material tags, not for general UI-like cards.

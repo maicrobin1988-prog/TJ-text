@@ -66,6 +66,15 @@ Use `assets/sample-project.json` as the canonical input. Each slide has:
 - `images`: optional array for grids or callouts.
 - `items`: short bullets, legend entries, or chapter topics.
 - `notes`: internal generation guidance; do not show unless explicitly needed.
+- `layout`: optional content page variant for `content` pages. Use `statement`, `metrics`, `matrix`, `split`, or `timeline`; omit it to let `inspect_pptx.py` rotate variants automatically.
+
+## Content Page Layouts
+
+- `statement`: use for executive summary, decision recommendation, central judgment, positioning, and one-strong-thesis pages. Make the Chinese judgment the main visual event.
+- `metrics`: use for market, rent, financial model, area, floor, percentage, and other quantitative pages. Only enlarge real numbers; otherwise use 01/02/03 markers.
+- `matrix`: use for current status, risk checklist, customer groups, product systems, and four-part comparison.
+- `split`: use for mixed explanation plus several supporting points.
+- `timeline`: use for implementation path, roadmap, decision sequence, phased upgrade, or journey-like strategic logic.
 
 ## Output Fidelity Notes
 
