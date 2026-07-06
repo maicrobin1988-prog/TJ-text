@@ -60,6 +60,20 @@
       "title_en": "RENDERING"
     },
     {
+      "type": "content",
+      "layout": "matrix",
+      "title_cn": "功能重组策略",
+      "title_en": "PLANNING STRATEGY",
+      "image": "images/planning-diagram.png",
+      "items": [
+        {"title_cn": "以到达界面、公共动线与核心配套作为空间更新的主要抓手。"},
+        {"title_cn": "前场展示强化"},
+        {"title_cn": "共享服务整合"},
+        {"title_cn": "办公邻里分层"},
+        {"title_cn": "导视与运营联动"}
+      ]
+    },
+    {
       "type": "materials",
       "title_cn": "空间用材",
       "title_en": "MATERIAL",

@@ -62,7 +62,7 @@ Use `assets/sample-project.json` as the canonical input. Each slide has:
 - `type`: page family.
 - `title_cn`, `title_en`: page title.
 - `chapter_no`: optional large chapter number.
-- `image`: optional dominant image path.
+- `image`: optional dominant image path. On `content` pages, this fills the reserved planning image/diagram slot; when omitted, the generator keeps a `PLANNING IMAGE TBD` placeholder for later editing.
 - `images`: optional array for grids or callouts.
 - `items`: short bullets, legend entries, or chapter topics.
 - `notes`: internal generation guidance; do not show unless explicitly needed.
@@ -75,6 +75,8 @@ Use `assets/sample-project.json` as the canonical input. Each slide has:
 - `matrix`: use for current status, risk checklist, customer groups, product systems, and four-part comparison.
 - `split`: use for mixed explanation plus several supporting points.
 - `timeline`: use for implementation path, roadmap, decision sequence, phased upgrade, or journey-like strategic logic.
+- Every `content` layout reserves a modifiable image area. Use it for planning diagrams, site photos, cropped plans, precedent references, tenant mix charts, or leave it as a visible placeholder until the image is ready.
+- Keep content hierarchy direct: large Chinese title, readable lead statement, then proof points. Do not shrink the whole page to fit extra copy; split pages instead.
 
 ## Output Fidelity Notes
 

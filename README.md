@@ -6,6 +6,7 @@ TJ-text is a reusable Codex skill for generating Chinese/English interior design
 - generating HTML, PPTX, and PDF outputs from one JSON source
 - rotating multiple text-heavy planning layouts instead of repeating one slide style
 - using large, clear cover typography and bilingual labels for proposal decks
+- reserving editable planning-image placeholders on strategy/content pages
 
 The machine-readable skill name is `tj-text`. The display name is `TJ-text`.
 
@@ -122,7 +123,27 @@ Each slide supports fields such as:
 - `title_cn`: main Chinese title
 - `title_en`: compact English category label
 - `items`: short content points, metrics, legends, or proof points
-- `image` / `images`: optional image paths for visual pages
+- `image`: optional dominant image path. On `content` pages, this replaces the reserved planning image/diagram placeholder.
+- `images`: optional image array for grids or material callouts
+
+Example content slide with a replaceable planning image slot:
+
+```json
+{
+  "type": "content",
+  "layout": "matrix",
+  "title_cn": "商业功能重组策略",
+  "title_en": "COMMERCIAL PLANNING",
+  "image": "images/planning-diagram.png",
+  "items": [
+    {"title_cn": "以首层到达界面作为商业更新的第一触点"},
+    {"title_cn": "沿街展示强化"},
+    {"title_cn": "垂直交通识别"},
+    {"title_cn": "业态组合优化"},
+    {"title_cn": "运营导视联动"}
+  ]
+}
+```
 
 ## Design Direction
 
@@ -130,10 +151,12 @@ TJ-text favors:
 
 - A3 landscape composition
 - large Chinese theme title on the first page
+- stronger title/body hierarchy on content pages
 - sparse white space
 - bilingual technical labels
 - cool blue/cyan/violet accents
 - large renderings or diagrams when available
+- reserved planning image positions that can be replaced by adding `image` paths
 - multiple composition types for strategy-heavy pages
 
 It avoids:

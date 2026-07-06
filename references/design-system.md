@@ -35,7 +35,7 @@ Use this when matching the company's common interior scheme text-book language, 
 ## Typography
 
 - Use a thin modern sans-serif look.
-- Chinese title: large, light-to-regular weight, black. Avoid heavy decorative fonts except the closing `谢谢`.
+- Chinese title: large, light-to-regular weight, black. Strategy/content pages should make the core Chinese thesis visibly larger than body copy. Avoid heavy decorative fonts except the closing `谢谢`.
 - English labels: uppercase or title case, light weight, expanded by whitespace rather than bold weight.
 - Bilingual rule: English label first for technical category headers, Chinese after slash or below it. Example: `RENDERING / 电梯厅效果图`.
 - Use small gray English subtitles under Chinese item names in diagrams.
@@ -69,6 +69,7 @@ Use this when matching the company's common interior scheme text-book language, 
 
 - Keep strong asymmetry. Most pages have a heavy image/diagram area and a quiet label zone.
 - On text-heavy strategy pages, do not make all pages share the same two-column composition. Rotate statement, metric, matrix, split, and timeline structures while preserving the same typography, margins, and cool accent system.
+- Reserve a planning image/diagram area on strategy content pages. When no image exists yet, keep the placeholder visible so the deck remains ready for user-supplied planning images, cropped plans, or analysis diagrams.
 - The first page/cover must carry the main project subject clearly: large Chinese title, concise subtitle, and 2-3 short strategic points. Do not let the title become a small label.
 - Do not center everything. Use large empty fields.
 - Let renderings breathe; avoid explanatory boxes on top unless the page is explicitly a material/callout page.

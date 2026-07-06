@@ -98,14 +98,14 @@ body { margin: 0; background: #e9ecef; font-family: Arial, "PingFang SC", "Micro
 .cover .gradient { width: 240mm; height: 240mm; right: -34mm; bottom: -46mm; opacity: .92; }
 .cover-title { position: absolute; top: 30mm; left: 28mm; width: 255mm; }
 .cover-title .eyebrow { color: #777; font-size: 17pt; letter-spacing: .10em; margin-bottom: 10mm; }
-.cover-title h1 { margin: 0; font-size: 49pt; line-height: 1.02; font-weight: 500; letter-spacing: 0; max-width: 245mm; }
+.cover-title h1 { margin: 0; font-size: 56pt; line-height: 1; font-weight: 560; letter-spacing: 0; max-width: 248mm; }
 .rule { width: 184mm; height: .3mm; background: #111; margin: 7mm 0; }
 .cover .rule { width: 112mm; height: .45mm; margin: 12mm 0 9mm; }
 .cover-cn { font-size: 29pt; line-height: 1.18; font-weight: 300; }
-.cover-sub { max-width: 210mm; font-size: 20pt; line-height: 1.32; color: #333; }
-.cover-sub small { display: block; margin-top: 3mm; color: #777; font-size: 12pt; letter-spacing: .04em; }
+.cover-sub { max-width: 220mm; font-size: 23pt; line-height: 1.25; color: #333; }
+.cover-sub small { display: block; margin-top: 3mm; color: #777; font-size: 13pt; letter-spacing: .04em; }
 .cover-points { position: absolute; left: 28mm; bottom: 52mm; display: flex; gap: 9mm; max-width: 260mm; }
-.cover-point { border-left: .45mm solid #315cff; padding-left: 4mm; width: 72mm; font-size: 11pt; line-height: 1.35; color: #333; }
+.cover-point { border-left: .55mm solid #315cff; padding-left: 4mm; width: 78mm; font-size: 13pt; line-height: 1.32; color: #222; }
 .brand { position: absolute; left: 28mm; bottom: 18mm; font-size: 8pt; color: #555; }
 .date { position: absolute; left: 28mm; bottom: 33mm; font-size: 14pt; }
 .toc { position: absolute; right: 78mm; top: 118mm; display: flex; gap: 18mm; color: #555; }
@@ -141,28 +141,36 @@ body { margin: 0; background: #e9ecef; font-family: Arial, "PingFang SC", "Micro
 .mat-summary { position: absolute; left: 18mm; bottom: 24mm; font-size: 15pt; line-height: 1.45; }
 .content-title { position: absolute; left: 24mm; top: 42mm; width: 205mm; }
 .content-title .en { color: #777; font-size: 14pt; letter-spacing: .08em; margin-bottom: 4mm; }
-.content-title h1 { margin: 0; font-size: 32pt; line-height: 1.12; font-weight: 450; }
-.content-lead { position: absolute; left: 24mm; top: 102mm; width: 188mm; color: #555; font-size: 17pt; line-height: 1.48; }
+.content-title h1 { margin: 0; font-size: 38pt; line-height: 1.08; font-weight: 540; }
+.content-lead { position: absolute; left: 24mm; top: 106mm; width: 188mm; color: #444; font-size: 19pt; line-height: 1.38; }
 .content-grid { position: absolute; left: 230mm; right: 24mm; top: 72mm; display: grid; grid-template-columns: 1fr; gap: 8mm; }
-.content-item { border-top: .35mm solid #d7dbe2; padding-top: 4mm; font-size: 15pt; line-height: 1.34; }
-.content-item .idx { color: #315cff; font-size: 12pt; margin-right: 3mm; }
-.content-item small { display: block; color: #888; font-size: 9pt; margin-top: 1mm; }
+.content-item { border-top: .35mm solid #d7dbe2; padding-top: 4mm; font-size: 17pt; line-height: 1.28; }
+.content-item .idx { color: #315cff; font-size: 13pt; margin-right: 3mm; }
+.content-item small { display: block; color: #888; font-size: 10pt; margin-top: 1mm; }
 .content-statement .content-title { top: 48mm; width: 345mm; }
-.content-statement .content-title h1 { font-size: 42pt; max-width: 310mm; }
-.statement-lead { position: absolute; left: 24mm; top: 128mm; width: 210mm; font-size: 21pt; line-height: 1.42; color: #333; }
+.content-statement .content-title h1 { font-size: 50pt; max-width: 330mm; }
+.statement-lead { position: absolute; left: 24mm; top: 132mm; width: 210mm; font-size: 24pt; line-height: 1.32; color: #222; }
 .statement-points { position: absolute; right: 25mm; bottom: 34mm; width: 125mm; display: grid; gap: 8mm; }
-.statement-point { border-top: .4mm solid #111; padding-top: 4mm; font-size: 15pt; line-height: 1.32; }
-.metrics-row { position: absolute; left: 24mm; right: 24mm; top: 126mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8mm; }
+.statement-point { border-top: .4mm solid #111; padding-top: 4mm; font-size: 17pt; line-height: 1.24; }
+.metrics-row { position: absolute; left: 24mm; right: 24mm; top: 118mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8mm; }
 .metric { border-top: .45mm solid #315cff; min-height: 50mm; padding-top: 5mm; }
-.metric b { display: block; font-size: 28pt; font-weight: 500; line-height: 1.05; }
-.metric span { display: block; margin-top: 4mm; color: #555; font-size: 12pt; line-height: 1.35; }
+.metric b { display: block; font-size: 34pt; font-weight: 560; line-height: 1.02; }
+.metric span { display: block; margin-top: 4mm; color: #444; font-size: 14pt; line-height: 1.28; }
 .matrix-grid { position: absolute; left: 225mm; top: 70mm; width: 166mm; height: 178mm; display: grid; grid-template-columns: repeat(2, 1fr); gap: 7mm; }
-.matrix-cell { background: rgba(223,247,251,.55); border-top: .45mm solid #315cff; padding: 7mm; font-size: 15pt; line-height: 1.32; }
+.matrix-cell { background: rgba(223,247,251,.55); border-top: .45mm solid #315cff; padding: 7mm; font-size: 17pt; line-height: 1.24; }
 .matrix-cell:nth-child(2), .matrix-cell:nth-child(3) { background: rgba(222,214,255,.42); }
-.timeline { position: absolute; left: 32mm; right: 32mm; top: 158mm; display: flex; justify-content: space-between; border-top: 1.1mm solid #315cff; }
-.time-node { width: 62mm; padding-top: 9mm; position: relative; font-size: 14pt; line-height: 1.35; }
+.timeline { position: absolute; left: 32mm; right: 32mm; top: 166mm; display: flex; justify-content: space-between; border-top: 1.1mm solid #315cff; }
+.time-node { width: 62mm; padding-top: 9mm; position: relative; font-size: 16pt; line-height: 1.25; }
 .time-node::before { content: ""; position: absolute; top: -4mm; left: 0; width: 8mm; height: 8mm; border-radius: 50%; background: #141b42; }
-.time-node b { display: block; color: #315cff; font-size: 14pt; margin-bottom: 2mm; }
+.time-node b { display: block; color: #315cff; font-size: 16pt; margin-bottom: 2mm; }
+.content-visual { position: absolute; display: flex; align-items: center; justify-content: center; border: .35mm solid #d7dbe2; color: #8a8a8a; font-size: 13pt; letter-spacing: .05em; overflow: hidden; }
+.content-visual.image { background: #e8ecef; }
+.content-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.visual-statement { left: 24mm; bottom: 34mm; width: 176mm; height: 62mm; }
+.visual-metrics { left: 24mm; right: 24mm; bottom: 30mm; height: 62mm; }
+.visual-matrix { left: 24mm; bottom: 34mm; width: 172mm; height: 82mm; }
+.visual-timeline { right: 28mm; top: 80mm; width: 132mm; height: 60mm; }
+.visual-split { left: 24mm; bottom: 34mm; width: 176mm; height: 82mm; }
 .thanks { position: absolute; left: 132mm; top: 112mm; display: grid; grid-template-columns: 84mm 115mm; column-gap: 18mm; align-items: center; }
 .thanks-en { color: #888; font-size: 33pt; line-height: 1.1; font-weight: 300; text-align: center; }
 .thanks-cn { font-size: 43pt; font-weight: 800; margin-top: 12mm; text-align: center; }
@@ -272,38 +280,39 @@ def render_slide(slide: Dict[str, Any], project: Dict[str, Any], base: Path, ind
         lead = esc(item_title(items[0], "title_cn")) if items else ""
         layout = content_layout(slide, index)
         title = f'<div class="content-title"><div class="en">{esc(title_en)}</div><h1>{html_lines(title_cn)}</h1></div>'
+        visual = render_image_box(slide.get("image"), base, f"content-visual visual-{layout}", "PLANNING IMAGE")
         if layout == "statement":
             points = "".join(
                 f'<div class="statement-point"><span class="idx">{i:02d}</span>{esc(item_title(item, "title_cn"))}</div>'
                 for i, item in enumerate(items[1:5], 1)
             )
-            body = f'{title}<div class="statement-lead">{lead}</div><div class="statement-points">{points}</div>'
+            body = f'{title}<div class="statement-lead">{lead}</div>{visual}<div class="statement-points">{points}</div>'
         elif layout == "metrics":
             metric_cards = []
             for i, item in enumerate(items[:4], 1):
                 value, label = metric_parts(item, i)
                 metric_cards.append(f'<div class="metric"><b>{esc(value)}</b><span>{esc(label)}</span></div>')
             metrics = "".join(metric_cards)
-            body = f'{title}<div class="metrics-row">{metrics}</div>'
+            body = f'{title}<div class="metrics-row">{metrics}</div>{visual}'
         elif layout == "matrix":
             cells = "".join(
                 f'<div class="matrix-cell"><span class="idx">{i:02d}</span><br>{esc(item_title(item, "title_cn"))}</div>'
                 for i, item in enumerate(items[1:5], 1)
             )
-            body = f'{title}<div class="content-lead">{lead}</div><div class="matrix-grid">{cells}</div>'
+            body = f'{title}<div class="content-lead">{lead}</div>{visual}<div class="matrix-grid">{cells}</div>'
         elif layout == "timeline":
             nodes = "".join(
                 f'<div class="time-node"><b>{i:02d}</b>{esc(item_title(item, "title_cn"))}</div>'
                 for i, item in enumerate(items[1:6], 1)
             )
-            body = f'{title}<div class="content-lead">{lead}</div><div class="timeline">{nodes}</div>'
+            body = f'{title}<div class="content-lead">{lead}</div>{visual}<div class="timeline">{nodes}</div>'
         else:
             rows = []
             for i, item in enumerate(items[1:7], 1):
                 rows.append(
                     f'<div class="content-item"><span class="idx">{i:02d}</span>{esc(item_title(item, "title_cn"))}<small>{esc(item_title(item, "title_en"))}</small></div>'
                 )
-            body = f'{title}<div class="content-lead">{lead}</div><div class="content-grid">{"".join(rows)}</div>'
+            body = f'{title}<div class="content-lead">{lead}</div>{visual}<div class="content-grid">{"".join(rows)}</div>'
         return f"""
 <section class="slide content content-{layout}" data-title="{esc(title_cn)}">
   {header}
@@ -406,14 +415,14 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
             add_rect(slide, Inches(7.2), Inches(1.2), Inches(5.3), Inches(5.3), PALE_BLUE, 35)
             if typ == "cover":
                 add_textbox(slide, Inches(0.75), Inches(0.55), Inches(6.2), Inches(0.35), spec.get("title_en", project.get("title_en")), 13, GRAY)
-                add_textbox(slide, Inches(0.75), Inches(1.05), Inches(7.6), Inches(1.55), spec.get("title_cn", project.get("title_cn")), 33, INK, True)
+                add_textbox(slide, Inches(0.75), Inches(1.0), Inches(7.9), Inches(1.75), spec.get("title_cn", project.get("title_cn")), 38, INK, True)
                 add_rect(slide, Inches(0.75), Inches(2.8), Inches(3.7), Inches(0.03), INK)
-                add_textbox(slide, Inches(0.75), Inches(3.05), Inches(7.2), Inches(0.75), spec.get("subtitle_cn", project.get("subtitle_cn")), 17, INK)
+                add_textbox(slide, Inches(0.75), Inches(3.05), Inches(7.45), Inches(0.82), spec.get("subtitle_cn", project.get("subtitle_cn")), 19, INK)
                 x = Inches(0.75)
                 for item in spec.get("items", [])[:3]:
                     add_rect(slide, x, Inches(5.75), Inches(0.02), Inches(0.55), BLUE)
-                    add_textbox(slide, x + Inches(0.12), Inches(5.72), Inches(2.1), Inches(0.52), item_title(item, "title_cn"), 9, INK)
-                    x += Inches(2.35)
+                    add_textbox(slide, x + Inches(0.12), Inches(5.7), Inches(2.35), Inches(0.58), item_title(item, "title_cn"), 11, INK)
+                    x += Inches(2.55)
                 add_textbox(slide, Inches(0.75), Inches(6.75), Inches(2), Inches(0.3), project.get("date", ""), 11)
                 add_textbox(slide, Inches(0.75), Inches(7.02), Inches(5), Inches(0.25), project.get("company_cn", ""), 6, GRAY)
             else:
@@ -472,36 +481,40 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
             add_rect(slide, Inches(8.3), Inches(1.2), Inches(3.8), Inches(3.8), PALE_BLUE, 45)
             items = spec.get("items", [])
             add_textbox(slide, Inches(0.7), Inches(0.95), Inches(5.2), Inches(0.32), title_en, 10, GRAY)
-            add_textbox(slide, Inches(0.7), Inches(1.34), Inches(6.5), Inches(0.95), title_cn, 24, INK, True)
+            add_textbox(slide, Inches(0.7), Inches(1.28), Inches(6.85), Inches(1.05), title_cn, 28, INK, True)
             lead = item_title(items[0], "title_cn") if items else ""
             if layout == "statement":
-                add_textbox(slide, Inches(0.7), Inches(2.8), Inches(6.2), Inches(1.25), lead, 17, INK)
+                add_textbox(slide, Inches(0.7), Inches(2.75), Inches(6.2), Inches(1.15), lead, 19, INK)
+                add_picture_or_placeholder(slide, spec.get("image"), data_base, Inches(0.7), Inches(4.55), Inches(5.8), Inches(1.55), "PLANNING IMAGE TBD")
                 y = Inches(4.65)
                 for i, item in enumerate(items[1:5], 1):
                     add_rect(slide, Inches(7.2), y, Inches(4.5), Inches(0.02), INK)
-                    add_textbox(slide, Inches(7.2), y + Inches(0.16), Inches(0.5), Inches(0.25), f"{i:02d}", 9, BLUE)
-                    add_textbox(slide, Inches(7.75), y + Inches(0.1), Inches(4.0), Inches(0.45), item_title(item, "title_cn"), 12)
+                    add_textbox(slide, Inches(7.2), y + Inches(0.16), Inches(0.5), Inches(0.25), f"{i:02d}", 10, BLUE)
+                    add_textbox(slide, Inches(7.75), y + Inches(0.08), Inches(4.0), Inches(0.48), item_title(item, "title_cn"), 14)
                     y += Inches(0.62)
             elif layout == "metrics":
                 x = Inches(0.75)
                 for i, item in enumerate(items[:4], 1):
-                    add_rect(slide, x, Inches(3.25), Inches(2.6), Inches(0.03), BLUE)
+                    add_rect(slide, x, Inches(3.02), Inches(2.6), Inches(0.03), BLUE)
                     value, label = metric_parts(item, i)
-                    add_textbox(slide, x, Inches(3.45), Inches(2.5), Inches(0.65), value, 22, INK, True)
-                    add_textbox(slide, x, Inches(4.15), Inches(2.55), Inches(0.75), label, 10, GRAY)
+                    add_textbox(slide, x, Inches(3.22), Inches(2.5), Inches(0.65), value, 26, INK, True)
+                    add_textbox(slide, x, Inches(3.92), Inches(2.55), Inches(0.75), label, 12, GRAY)
                     x += Inches(3.05)
+                add_picture_or_placeholder(slide, spec.get("image"), data_base, Inches(0.75), Inches(5.25), Inches(11.4), Inches(1.35), "PLANNING IMAGE TBD")
             elif layout == "matrix":
                 if lead:
-                    add_textbox(slide, Inches(0.7), Inches(2.65), Inches(5.6), Inches(1.1), lead, 14, GRAY)
+                    add_textbox(slide, Inches(0.7), Inches(2.58), Inches(5.6), Inches(1.15), lead, 16, GRAY)
+                add_picture_or_placeholder(slide, spec.get("image"), data_base, Inches(0.7), Inches(4.2), Inches(5.6), Inches(2.0), "PLANNING IMAGE TBD")
                 positions = [(7.05, 1.75), (9.6, 1.75), (7.05, 4.0), (9.6, 4.0)]
                 for i, item in enumerate(items[1:5], 1):
                     x, y = positions[i - 1]
                     add_rect(slide, Inches(x), Inches(y), Inches(2.25), Inches(1.55), PALE_LAV if i in (2, 3) else PALE_BLUE, 15)
-                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.18), Inches(0.5), Inches(0.25), f"{i:02d}", 9, BLUE)
-                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.55), Inches(1.9), Inches(0.65), item_title(item, "title_cn"), 11)
+                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.18), Inches(0.5), Inches(0.25), f"{i:02d}", 10, BLUE)
+                    add_textbox(slide, Inches(x + 0.15), Inches(y + 0.52), Inches(1.9), Inches(0.78), item_title(item, "title_cn"), 12)
             elif layout == "timeline":
                 if lead:
-                    add_textbox(slide, Inches(0.7), Inches(2.6), Inches(5.6), Inches(0.8), lead, 13, GRAY)
+                    add_textbox(slide, Inches(0.7), Inches(2.55), Inches(5.6), Inches(0.9), lead, 15, GRAY)
+                add_picture_or_placeholder(slide, spec.get("image"), data_base, Inches(7.55), Inches(1.65), Inches(4.4), Inches(1.55), "PLANNING IMAGE TBD")
                 add_rect(slide, Inches(0.95), Inches(4.55), Inches(11.2), Inches(0.04), BLUE)
                 timeline_items = items[1:6]
                 step = 10.4 / max(len(timeline_items) - 1, 1)
@@ -511,16 +524,17 @@ def build_pptx(data: Dict[str, Any], out_pptx: Path, data_base: Path) -> None:
                     dot.fill.solid()
                     dot.fill.fore_color.rgb = RGBColor(20, 27, 66)
                     dot.line.fill.background()
-                    add_textbox(slide, x, Inches(4.85), Inches(1.8), Inches(0.25), f"{i:02d}", 9, BLUE)
-                    add_textbox(slide, x, Inches(5.12), Inches(1.9), Inches(0.65), item_title(item, "title_cn"), 9, INK)
+                    add_textbox(slide, x, Inches(4.85), Inches(1.8), Inches(0.25), f"{i:02d}", 10, BLUE)
+                    add_textbox(slide, x, Inches(5.12), Inches(1.9), Inches(0.72), item_title(item, "title_cn"), 10, INK)
             else:
                 if lead:
-                    add_textbox(slide, Inches(0.7), Inches(2.6), Inches(5.7), Inches(1.2), lead, 14, GRAY)
+                    add_textbox(slide, Inches(0.7), Inches(2.55), Inches(5.7), Inches(1.18), lead, 16, GRAY)
+                add_picture_or_placeholder(slide, spec.get("image"), data_base, Inches(0.7), Inches(4.35), Inches(5.7), Inches(1.85), "PLANNING IMAGE TBD")
                 y = Inches(1.75)
                 for i, item in enumerate(items[1:7], 1):
                     add_rect(slide, Inches(7.05), y, Inches(4.9), Inches(0.01), LINE)
-                    add_textbox(slide, Inches(7.05), y + Inches(0.12), Inches(0.45), Inches(0.25), f"{i:02d}", 9, BLUE)
-                    add_textbox(slide, Inches(7.55), y + Inches(0.08), Inches(4.2), Inches(0.42), item_title(item, "title_cn"), 12)
+                    add_textbox(slide, Inches(7.05), y + Inches(0.12), Inches(0.45), Inches(0.25), f"{i:02d}", 10, BLUE)
+                    add_textbox(slide, Inches(7.55), y + Inches(0.06), Inches(4.2), Inches(0.46), item_title(item, "title_cn"), 13)
                     y += Inches(0.72)
             continue
 
@@ -597,20 +611,20 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
             text(28, 34, spec.get("title_en", project.get("title_en", "")), 16, colors.HexColor("#777777"), "Helvetica")
             y = 62
             for line in str(spec.get("title_cn", project.get("title_cn", ""))).splitlines()[:3]:
-                text(28, y, line, 44)
-                y += 22
+                text(28, y, line, 50)
+                y += 24
             c.setStrokeColor(colors.black)
             c.line(mm(28), page_h - mm(y), mm(200), page_h - mm(y))
             y += 14
-            text(28, y, spec.get("subtitle_cn", project.get("subtitle_cn", "")), 22)
+            text(28, y, spec.get("subtitle_cn", project.get("subtitle_cn", "")), 25)
             x = 28
             for item in spec.get("items", [])[:3]:
                 c.setStrokeColor(colors.HexColor("#315cff"))
                 c.setLineWidth(mm(0.45))
-                c.line(mm(x), page_h - mm(244), mm(x), page_h - mm(260))
-                text(x + 4, 252, item_title(item, "title_cn"), 10)
-                x += 70
-            text(28, 270, project.get("date", ""), 14)
+                c.line(mm(x), page_h - mm(238), mm(x), page_h - mm(254))
+                text(x + 4, 246, item_title(item, "title_cn"), 12)
+                x += 78
+            text(28, 272, project.get("date", ""), 14)
             text(28, 284, project.get("company_cn", ""), 8)
             c.showPage()
             continue
@@ -684,42 +698,46 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
             title_lines = str(spec.get("title_cn", "")).splitlines() or [str(spec.get("title_cn", ""))]
             y_title = 68
             for line in title_lines[:2]:
-                text(24, y_title, line, 30)
-                y_title += 14
+                text(24, y_title, line, 34)
+                y_title += 16
             items = spec.get("items", [])
             lead = item_title(items[0], "title_cn") if items else ""
             if layout == "statement":
-                text(24, 128, lead, 20, colors.HexColor("#333333"))
+                text(24, 128, lead, 23, colors.HexColor("#333333"))
+                image_or_placeholder(spec.get("image"), 24, 210, 176, 54, "PLANNING IMAGE TBD")
                 y = 166
                 for i, item in enumerate(items[1:5], 1):
                     c.setStrokeColor(colors.black)
                     c.line(mm(250), page_h - mm(y), mm(390), page_h - mm(y))
-                    text(250, y + 10, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
-                    text(267, y + 10, item_title(item, "title_cn"), 13)
+                    text(250, y + 10, f"{i:02d}", 11, colors.HexColor("#315cff"), "Helvetica")
+                    text(267, y + 10, item_title(item, "title_cn"), 15)
                     y += 26
             elif layout == "metrics":
                 x = 24
                 for i, item in enumerate(items[:4], 1):
                     c.setStrokeColor(colors.HexColor("#315cff"))
                     c.setLineWidth(mm(0.45))
-                    c.line(mm(x), page_h - mm(126), mm(x + 80), page_h - mm(126))
+                    c.line(mm(x), page_h - mm(118), mm(x + 80), page_h - mm(118))
                     value, label = metric_parts(item, i)
-                    text(x, 148, value, 28)
-                    text(x, 166, label, 11, colors.HexColor("#555555"))
+                    text(x, 140, value, 32)
+                    text(x, 158, label, 13, colors.HexColor("#555555"))
                     x += 96
+                image_or_placeholder(spec.get("image"), 24, 210, 372, 58, "PLANNING IMAGE TBD")
             elif layout == "matrix":
                 if lead:
-                    text(24, 116, lead, 15, colors.HexColor("#555555"))
+                    text(24, 116, lead, 17, colors.HexColor("#555555"))
+                image_or_placeholder(spec.get("image"), 24, 190, 172, 76, "PLANNING IMAGE TBD")
                 positions = [(225, 72), (310, 72), (225, 160), (310, 160)]
                 for i, item in enumerate(items[1:5], 1):
                     x, y = positions[i - 1]
                     c.setFillColor(colors.HexColor("#dff7fb" if i in (1, 4) else "#ded6ff"))
                     c.rect(mm(x), page_h - mm(y + 62), mm(76), mm(62), fill=1, stroke=0)
-                    text(x + 6, y + 16, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
-                    text(x + 6, y + 34, item_title(item, "title_cn"), 13)
+                    text(x + 6, y + 16, f"{i:02d}", 11, colors.HexColor("#315cff"), "Helvetica")
+                    text(x + 6, y + 34, item_title(item, "title_cn"), 15)
             elif layout == "timeline":
                 if lead:
-                    text(24, 112, lead, 15, colors.HexColor("#555555"))
+                    text(24, 112, lead, 17, colors.HexColor("#555555"))
+                image_or_placeholder(spec.get("image"), 260, 82, 132, 58, "PLANNING IMAGE TBD")
                 c.setStrokeColor(colors.HexColor("#315cff"))
                 c.setLineWidth(mm(1))
                 c.line(mm(32), page_h - mm(166), mm(388), page_h - mm(166))
@@ -729,17 +747,18 @@ def build_reportlab_pdf(data: Dict[str, Any], out_pdf: Path, data_base: Path) ->
                     x = 32 + (i - 1) * step
                     c.setFillColor(colors.HexColor("#141b42"))
                     c.circle(mm(x), page_h - mm(166), mm(3.4), fill=1, stroke=0)
-                    text(x, 186, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
-                    text(x, 198, item_title(item, "title_cn"), 11)
+                    text(x, 186, f"{i:02d}", 11, colors.HexColor("#315cff"), "Helvetica")
+                    text(x, 198, item_title(item, "title_cn"), 13)
             else:
                 if lead:
-                    text(24, 112, lead, 15, colors.HexColor("#555555"))
+                    text(24, 112, lead, 17, colors.HexColor("#555555"))
+                image_or_placeholder(spec.get("image"), 24, 190, 176, 76, "PLANNING IMAGE TBD")
                 y = 88
                 for i, item in enumerate(items[1:7], 1):
                     c.setStrokeColor(colors.HexColor("#d7dbe2"))
                     c.line(mm(225), page_h - mm(y), mm(390), page_h - mm(y))
-                    text(225, y + 11, f"{i:02d}", 10, colors.HexColor("#315cff"), "Helvetica")
-                    text(242, y + 11, item_title(item, "title_cn"), 13)
+                    text(225, y + 11, f"{i:02d}", 11, colors.HexColor("#315cff"), "Helvetica")
+                    text(242, y + 11, item_title(item, "title_cn"), 15)
                     y += 24
             c.showPage()
             continue
