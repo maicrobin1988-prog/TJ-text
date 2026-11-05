@@ -18,6 +18,21 @@ TJ-text can be used by Codex and by repository-based agents such as Open Cloud, 
 - `agent-manifest.json`: machine-readable capability and command manifest
 - `agents/openai.yaml`: OpenAI/Codex UI metadata
 
+## 飞书案例解剖与归档
+
+独立 Skill [`lark-case-library`](skills/lark-case-library/SKILL.md) 用于拆解设计案例 PDF，制作可搜索的飞书画板，并将画板和原始 PDF 归档到同一条多维表格记录。
+
+在 Codex 中，可先克隆本仓库，再到需要使用该 Skill 的项目目录运行：
+
+```bash
+mkdir -p .agents/skills/lark-case-library
+cp -R /path/to/TJ-text/skills/lark-case-library/. .agents/skills/lark-case-library/
+```
+
+把 `/path/to/TJ-text` 替换为实际克隆位置。在对话中使用 `$lark-case-library`，提供案例 PDF 及目标飞书案例库或单条记录链接。其他支持 `SKILL.md` 的 Agent 可导入整个 `skills/lark-case-library` 目录。同步新版时，更新仓库后重新复制该目录。
+
+飞书案例资料和权限由各团队管理。执行云端归档需要调用者有对应画板、多维表格和附件的访问与写入能力。
+
 ## What It Produces
 
 From a single project JSON file, TJ-text can generate:
