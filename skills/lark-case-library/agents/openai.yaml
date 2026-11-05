@@ -1,0 +1,4 @@
+interface:
+  display_name: "飞书案例解剖与归档"
+  short_description: "拆解设计案例、制作可搜索的原页证据画板，并归档到飞书多维表格"
+  default_prompt: "用 $lark-case-library 拆解我提供的方案 PDF，并把画板与原件存进指定的飞书案例库。"
