@@ -33,6 +33,19 @@ cp -R /path/to/TJ-text/skills/lark-case-library/. .agents/skills/lark-case-libra
 
 飞书案例资料和权限由各团队管理。执行云端归档需要调用者有对应画板、多维表格和附件的访问与写入能力。
 
+## 项目前期研究与概念策划
+
+独立 Skill [`interior-project-research`](skills/interior-project-research/README.md) 从项目名称、任务书或碎片资料开展多维前期研究，判断当前关键矛盾，提出策略与空间解决方向，组织概念策划汇报，并以带原页证据的飞书画板交付。
+
+在 Codex 中可发送：
+
+```text
+请用 $skill-installer 安装：
+https://github.com/maicrobin1988-prog/TJ-text/tree/main/skills/interior-project-research
+```
+
+安装后用 `$interior-project-research` 提供项目名称和已有资料。也可单独导入 `skills/interior-project-research` 目录；本技能无须安装 TJ-text 演示文稿的 Python 依赖。网页、附件读取及飞书授权由使用者的运行环境提供，详见[使用与能力要求](skills/interior-project-research/README.md#运行能力与飞书交付)。
+
 ## What It Produces
 
 From a single project JSON file, TJ-text can generate:

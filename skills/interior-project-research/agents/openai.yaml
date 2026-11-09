@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目前期研究与概念策划"
+  short_description: "从项目名称、任务书与碎片资料开展前期研究，形成策略判断、概念策划和飞书画板"
+  default_prompt: "用 $interior-project-research 根据我提供的项目名称、任务书或碎片资料开展前期研究，识别当前重点，提出策略与解决方向，搭建概念策划汇报结构，并以飞书画板呈现依据与结论。"
