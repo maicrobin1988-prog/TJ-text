@@ -1,0 +1,22 @@
+{
+  "version": "2.1.0",
+  "distribution": "portable-public",
+  "workflow": "cached_picker_then_single_production",
+  "cached_groups": 5,
+  "cached_styles": 8,
+  "public_assets": "self-generated schematics and generic templates only",
+  "excluded": "customer cases, original reference screenshots, source filename/hash manifest",
+  "validation_scope": {
+    "cache_cli": "passed from both extracted archives: 8/3/2 choices, zero PDF reads",
+    "archive_structure": "passed: portable parent directory, WorkBuddy root SKILL and published display metadata",
+    "native_baseline": "macOS InDesign 2025 / 20.0.0.95, historical generic fixture tests",
+    "workbuddy_live_import": "not performed",
+    "windows_native_execution": "not performed",
+    "selected_style_compile": "passed: synthetic single-style job references extracted renderer",
+    "public_privacy_audit": "passed: no customer cases, third-party reference screenshots, author paths or template links"
+  },
+  "dependencies": {
+    "picker": "Python standard library or direct host preview of prebuilt PNG",
+    "production": "Python3.9+, PyMuPDF>=1.26.5,<2, Pillow>=11,<12, local InDesign"
+  }
+}

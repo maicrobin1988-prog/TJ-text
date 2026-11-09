@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "workflow": "cached_picker_then_single_production",
+  "preview": "八款风格速选.png",
+  "preview_kind": "fixed_reference_schematic_not_project_preview",
+  "groups": {
+    "A": {"name": "材质精细", "ids": ["A1"], "preview": "cards/A1.png"},
+    "B": {"name": "线稿色块", "ids": ["B1", "B2", "B3"], "preview": "B_线稿色块.png"},
+    "C": {"name": "低饱和氛围", "ids": ["C1"], "preview": "cards/C1.png"},
+    "D": {"name": "模型投影", "ids": ["D1", "D2"], "preview": "D_模型投影.png"},
+    "E": {"name": "索引标注", "ids": ["E1"], "preview": "cards/E1.png"}
+  },
+  "styles": [
+    {"id": "A1", "name": "材质精细", "group": "A", "feature": "木石材质、细部与柔阴影"},
+    {"id": "B1", "name": "橙色动线", "group": "B", "feature": "浅灰线稿、橙色通道强调"},
+    {"id": "B2", "name": "亮黄岛群", "group": "B", "feature": "白底、黄色活动组团"},
+    {"id": "B3", "name": "淡粉分区", "group": "B", "feature": "黑白线稿、淡粉功能色阶"},
+    {"id": "C1", "name": "低饱和氛围", "group": "C", "feature": "粉灰空间、灰青环境层次"},
+    {"id": "D1", "name": "灰模黑墙", "group": "D", "feature": "灰阶、深色墙体与强投影"},
+    {"id": "D2", "name": "白模暖边", "group": "D", "feature": "白色轻线、暖边与柔投影"},
+    {"id": "E1", "name": "黑白红标注", "group": "E", "feature": "黑白灰线稿、红色重点索引"}
+  ]
+}

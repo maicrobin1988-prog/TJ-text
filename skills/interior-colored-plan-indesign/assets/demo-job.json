@@ -1,0 +1,1118 @@
+{
+  "mode": "demo",
+  "name": "八款风格同底图小样",
+  "title": "室内彩平 · 风格样式库",
+  "subtitle": "同一平面 / 同一家具 / 同一编号 / 不同表达方法",
+  "fictional_fixture": true,
+  "coordinate_size": [
+    1000,
+    700
+  ],
+  "style_ids": [
+    "A1",
+    "B1",
+    "B2",
+    "B3",
+    "C1",
+    "D1",
+    "D2",
+    "E1"
+  ],
+  "rooms": [
+    {
+      "id": "01",
+      "name": "接待前厅",
+      "anchor": [
+        120,
+        220
+      ],
+      "secondary": false,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "02",
+      "name": "会议室",
+      "anchor": [
+        555,
+        220
+      ],
+      "secondary": false,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "03",
+      "name": "开放办公",
+      "anchor": [
+        900,
+        220
+      ],
+      "secondary": false,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "04",
+      "name": "协作区",
+      "anchor": [
+        690,
+        610
+      ],
+      "secondary": false,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "05",
+      "name": "休闲洽谈",
+      "anchor": [
+        130,
+        610
+      ],
+      "secondary": false,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "06",
+      "name": "茶水间",
+      "anchor": [
+        900,
+        480
+      ],
+      "secondary": true,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    },
+    {
+      "id": "07",
+      "name": "储藏间",
+      "anchor": [
+        900,
+        620
+      ],
+      "secondary": true,
+      "status": "verified",
+      "source_label": "虚构平面：用于技能测试"
+    }
+  ],
+  "zones": [
+    {
+      "room_id": "01",
+      "polygon": [
+        [
+          40,
+          40
+        ],
+        [
+          300,
+          40
+        ],
+        [
+          300,
+          280
+        ],
+        [
+          40,
+          280
+        ]
+      ],
+      "material": "stone"
+    },
+    {
+      "room_id": "02",
+      "polygon": [
+        [
+          300,
+          40
+        ],
+        [
+          620,
+          40
+        ],
+        [
+          620,
+          280
+        ],
+        [
+          300,
+          280
+        ]
+      ],
+      "material": "carpet"
+    },
+    {
+      "room_id": "03",
+      "polygon": [
+        [
+          620,
+          40
+        ],
+        [
+          960,
+          40
+        ],
+        [
+          960,
+          280
+        ],
+        [
+          620,
+          280
+        ]
+      ],
+      "material": "wood"
+    },
+    {
+      "room_id": "04",
+      "polygon": [
+        [
+          410,
+          390
+        ],
+        [
+          760,
+          390
+        ],
+        [
+          760,
+          660
+        ],
+        [
+          410,
+          660
+        ]
+      ],
+      "material": "wood"
+    },
+    {
+      "room_id": "05",
+      "polygon": [
+        [
+          40,
+          390
+        ],
+        [
+          410,
+          390
+        ],
+        [
+          410,
+          660
+        ],
+        [
+          40,
+          660
+        ]
+      ],
+      "material": "carpet"
+    },
+    {
+      "room_id": "06",
+      "polygon": [
+        [
+          760,
+          390
+        ],
+        [
+          960,
+          390
+        ],
+        [
+          960,
+          540
+        ],
+        [
+          760,
+          540
+        ]
+      ],
+      "material": "stone"
+    },
+    {
+      "room_id": "07",
+      "polygon": [
+        [
+          760,
+          540
+        ],
+        [
+          960,
+          540
+        ],
+        [
+          960,
+          660
+        ],
+        [
+          760,
+          660
+        ]
+      ],
+      "material": "stone"
+    }
+  ],
+  "walls": [
+    {
+      "a": [
+        40,
+        40
+      ],
+      "b": [
+        960,
+        40
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        960,
+        40
+      ],
+      "b": [
+        960,
+        660
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        960,
+        660
+      ],
+      "b": [
+        40,
+        660
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        40,
+        660
+      ],
+      "b": [
+        40,
+        370
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        40,
+        300
+      ],
+      "b": [
+        40,
+        40
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        300,
+        40
+      ],
+      "b": [
+        300,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        620,
+        40
+      ],
+      "b": [
+        620,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        40,
+        280
+      ],
+      "b": [
+        180,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        235,
+        280
+      ],
+      "b": [
+        430,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        485,
+        280
+      ],
+      "b": [
+        730,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        785,
+        280
+      ],
+      "b": [
+        960,
+        280
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        40,
+        390
+      ],
+      "b": [
+        180,
+        390
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        235,
+        390
+      ],
+      "b": [
+        510,
+        390
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        565,
+        390
+      ],
+      "b": [
+        840,
+        390
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        895,
+        390
+      ],
+      "b": [
+        960,
+        390
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        410,
+        390
+      ],
+      "b": [
+        410,
+        660
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        760,
+        390
+      ],
+      "b": [
+        760,
+        660
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        760,
+        540
+      ],
+      "b": [
+        840,
+        540
+      ],
+      "width": 7
+    },
+    {
+      "a": [
+        895,
+        540
+      ],
+      "b": [
+        960,
+        540
+      ],
+      "width": 7
+    }
+  ],
+  "lines": [
+    {
+      "a": [
+        80,
+        335
+      ],
+      "b": [
+        98,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        120,
+        335
+      ],
+      "b": [
+        138,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        160,
+        335
+      ],
+      "b": [
+        178,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        200,
+        335
+      ],
+      "b": [
+        218,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        240,
+        335
+      ],
+      "b": [
+        258,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        280,
+        335
+      ],
+      "b": [
+        298,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        320,
+        335
+      ],
+      "b": [
+        338,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    },
+    {
+      "a": [
+        360,
+        335
+      ],
+      "b": [
+        378,
+        335
+      ],
+      "width": 0.8,
+      "color": "#B9BCBA"
+    }
+  ],
+  "furniture": [
+    {
+      "shape": "rect",
+      "bounds": [
+        95,
+        105,
+        135,
+        45
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        120,
+        165,
+        105,
+        28
+      ],
+      "round": true
+    },
+    {
+      "shape": "ellipse",
+      "bounds": [
+        355,
+        100,
+        215,
+        80
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        370,
+        77,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        370,
+        186,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        420,
+        77,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        420,
+        186,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        470,
+        77,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        470,
+        186,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        520,
+        77,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        520,
+        186,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        670,
+        90,
+        100,
+        42
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        702,
+        67,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        670,
+        165,
+        100,
+        42
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        702,
+        142,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        790,
+        90,
+        100,
+        42
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        822,
+        67,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        790,
+        165,
+        100,
+        42
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        822,
+        142,
+        28,
+        18
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        450,
+        440,
+        120,
+        55
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        462,
+        419,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        462,
+        500,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        524,
+        419,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        524,
+        500,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        585,
+        500,
+        120,
+        55
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        597,
+        479,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        597,
+        560,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        659,
+        479,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        659,
+        560,
+        28,
+        17
+      ],
+      "round": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        95,
+        440,
+        140,
+        35
+      ],
+      "round": true,
+      "accent": true
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        95,
+        485,
+        35,
+        82
+      ],
+      "round": true,
+      "accent": true
+    },
+    {
+      "shape": "ellipse",
+      "bounds": [
+        150,
+        490,
+        65,
+        65
+      ]
+    },
+    {
+      "shape": "ellipse",
+      "bounds": [
+        255,
+        480,
+        60,
+        60
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        800,
+        415,
+        135,
+        28
+      ]
+    },
+    {
+      "shape": "ellipse",
+      "bounds": [
+        810,
+        465,
+        45,
+        45
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        785,
+        565,
+        45,
+        70
+      ]
+    },
+    {
+      "shape": "rect",
+      "bounds": [
+        845,
+        565,
+        25,
+        70
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        250,
+        75,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        565,
+        70,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        915,
+        80,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        60,
+        430,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        340,
+        595,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        715,
+        590,
+        32,
+        32
+      ]
+    },
+    {
+      "shape": "plant",
+      "bounds": [
+        850,
+        335,
+        32,
+        32
+      ]
+    }
+  ],
+  "emphasis": [
+    {
+      "style_ids": [
+        "B1"
+      ],
+      "role": "main-circulation",
+      "polygon": [
+        [
+          40,
+          305
+        ],
+        [
+          920,
+          305
+        ],
+        [
+          920,
+          365
+        ],
+        [
+          40,
+          365
+        ]
+      ],
+      "opacity": 62
+    },
+    {
+      "style_ids": [
+        "B2"
+      ],
+      "role": "collaboration-island",
+      "polygon": [
+        [
+          438,
+          423
+        ],
+        [
+          554,
+          420
+        ],
+        [
+          591,
+          470
+        ],
+        [
+          547,
+          517
+        ],
+        [
+          438,
+          505
+        ],
+        [
+          420,
+          466
+        ]
+      ],
+      "opacity": 72
+    },
+    {
+      "style_ids": [
+        "B2"
+      ],
+      "role": "lounge-island",
+      "polygon": [
+        [
+          80,
+          428
+        ],
+        [
+          252,
+          425
+        ],
+        [
+          326,
+          476
+        ],
+        [
+          325,
+          555
+        ],
+        [
+          238,
+          583
+        ],
+        [
+          82,
+          580
+        ]
+      ],
+      "opacity": 72
+    },
+    {
+      "style_ids": [
+        "B2"
+      ],
+      "role": "collaboration-island-2",
+      "polygon": [
+        [
+          570,
+          484
+        ],
+        [
+          702,
+          485
+        ],
+        [
+          733,
+          532
+        ],
+        [
+          701,
+          581
+        ],
+        [
+          582,
+          580
+        ],
+        [
+          554,
+          534
+        ]
+      ],
+      "opacity": 72
+    }
+  ],
+  "library_maintenance": true
+}

@@ -1,0 +1,31 @@
+{
+  "name": "interior-colored-plan-indesign",
+  "display_name": "室内彩平制作",
+  "version": "2.1.0",
+  "description": "先选预存简图，再依据PDF在InDesign制作单款A3彩平及编号功能表。",
+  "entrypoints": {
+    "primary_instructions": "SKILL.md",
+    "generic_instructions": "AGENTS.md",
+    "claude_instructions": "CLAUDE.md",
+    "installation": "README.md",
+    "codex_metadata": "agents/openai.yaml"
+  },
+  "capabilities": ["cached-style-selection", "pdf-floor-plan-review", "native-indesign-colored-plan", "a3-space-index"],
+  "runtime": {
+    "picker": "Python standard library or direct host preview of cached PNG",
+    "production": "Python 3.9+, requirements.txt, local Adobe InDesign, desktop script execution",
+    "macos": "osascript or InDesign Scripts panel",
+    "windows": "InDesign Scripts panel; not end-to-end tested on Windows"
+  },
+  "commands": {
+    "choose_style": "python3 scripts/show_style_options.py",
+    "prepare_selected_job": "python3 scripts/prepare_job.py job.json --out output/final_R01",
+    "package": "python3 scripts/package_skill.py --out dist"
+  },
+  "distribution": {
+    "portable_zip": "interior-colored-plan-indesign-portable.zip",
+    "workbuddy_zip": "interior-colored-plan-indesign-workbuddy.zip",
+    "manifest_note": "Discovery aid for generic agents, not a claim that WorkBuddy natively parses this file."
+  },
+  "license": "MIT"
+}

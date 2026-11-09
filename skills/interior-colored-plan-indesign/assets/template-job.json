@@ -1,0 +1,13 @@
+{
+  "mode": "template",
+  "name": "A3彩平版式模板",
+  "title": "项目名称 · 平面规划",
+  "subtitle": "楼层 / 方案版本 / 日期",
+  "style_ids": [
+    "B3"
+  ],
+  "coordinate_size": [
+    1000,
+    700
+  ]
+}

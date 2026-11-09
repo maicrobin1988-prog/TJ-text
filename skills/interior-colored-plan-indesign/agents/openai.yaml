@@ -1,0 +1,4 @@
+interface:
+  display_name: "室内彩平制作"
+  short_description: "先显示预存风格简图与选项，选定后按PDF在InDesign直接制作单款A3彩平"
+  default_prompt: "使用 $interior-colored-plan-indesign，先展示预存风格简图让我选，选定后再根据 PDF 和图中文字直接制作单款 InDesign A3 彩平及编号功能表。"

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "A1",
+    "name": "材质精细",
+    "group": "A 材质精细型",
+    "source_files": [
+      "style-picker/cards/A1.png"
+    ],
+    "tagline": "米灰材质、精细家具与克制软阴影",
+    "bg": "#FFFFFF",
+    "floor": "#EAE8E1",
+    "secondary": "#D2CFC3",
+    "accent": "#A99A68",
+    "wall": "#555450",
+    "furniture": "#B7B2A8",
+    "green": "#91987A",
+    "shadow": "soft",
+    "texture": "material"
+  },
+  {
+    "id": "B1",
+    "name": "橙色动线",
+    "group": "B 线稿色块图解型",
+    "source_files": [
+      "style-picker/cards/B1.png"
+    ],
+    "tagline": "浅灰线稿托出一条橙色主通道",
+    "bg": "#FFFFFF",
+    "floor": "#F0F0EF",
+    "secondary": "#D5D2D0",
+    "accent": "#EF7951",
+    "wall": "#626262",
+    "furniture": "#FAFAF8",
+    "green": "#6C7568",
+    "shadow": "none",
+    "texture": "none"
+  },
+  {
+    "id": "B2",
+    "name": "亮黄岛群",
+    "group": "B 线稿色块图解型",
+    "source_files": [
+      "style-picker/cards/B2.png"
+    ],
+    "tagline": "白底线稿突出亮黄色活动组团",
+    "bg": "#FFFFFF",
+    "floor": "#FAFAF7",
+    "secondary": "#E9E9E4",
+    "accent": "#F3D928",
+    "wall": "#50504C",
+    "furniture": "#FFFFFF",
+    "green": "#8EBA8E",
+    "shadow": "none",
+    "texture": "none"
+  },
+  {
+    "id": "B3",
+    "name": "淡粉分区",
+    "group": "B 线稿色块图解型",
+    "source_files": [
+      "style-picker/cards/B3.png"
+    ],
+    "tagline": "黑白建筑线稿配淡粉功能分区",
+    "bg": "#FFFFFF",
+    "floor": "#FAF5F3",
+    "secondary": "#F0DCDF",
+    "accent": "#D7A7AF",
+    "wall": "#343434",
+    "furniture": "#F5F2EF",
+    "green": "#9DA89B",
+    "shadow": "none",
+    "texture": "none"
+  },
+  {
+    "id": "C1",
+    "name": "低饱和场地",
+    "group": "C 低饱和场地氛围型",
+    "source_files": [
+      "style-picker/cards/C1.png"
+    ],
+    "tagline": "粉灰室内与灰青环境建立场地层次",
+    "bg": "#E8EEEE",
+    "floor": "#E7D9D4",
+    "secondary": "#C7D8DA",
+    "accent": "#B78882",
+    "wall": "#946F6C",
+    "furniture": "#F1EAE4",
+    "green": "#B1C5BA",
+    "shadow": "long",
+    "texture": "paper"
+  },
+  {
+    "id": "D1",
+    "name": "灰模黑墙",
+    "group": "D 模型投影型",
+    "source_files": [
+      "style-picker/cards/D1.png"
+    ],
+    "tagline": "灰阶底面、黑色剖切墙和统一强投影",
+    "bg": "#D0D0CE",
+    "floor": "#BEBFBC",
+    "secondary": "#A4A6A2",
+    "accent": "#777A75",
+    "wall": "#242524",
+    "furniture": "#D8D8D3",
+    "green": "#8F938A",
+    "shadow": "strong",
+    "texture": "none"
+  },
+  {
+    "id": "D2",
+    "name": "白模暖边",
+    "group": "D 模型投影型",
+    "source_files": [
+      "style-picker/cards/D2.png"
+    ],
+    "tagline": "白色轻线稿配暖铜墙边与柔投影",
+    "bg": "#FFFFFF",
+    "floor": "#F7F6F2",
+    "secondary": "#E2DFD8",
+    "accent": "#B57D52",
+    "wall": "#AE7956",
+    "furniture": "#E9E7E0",
+    "green": "#B6BE9B",
+    "shadow": "soft",
+    "texture": "none"
+  },
+  {
+    "id": "E1",
+    "name": "黑白红标注",
+    "group": "E 索引标注型",
+    "source_files": [
+      "style-picker/cards/E1.png"
+    ],
+    "tagline": "黑白灰建筑底图配红色重点及编号索引",
+    "bg": "#FFFFFF",
+    "floor": "#FFFFFF",
+    "secondary": "#E3E3E3",
+    "accent": "#C7353D",
+    "wall": "#656565",
+    "furniture": "#FAFAFA",
+    "green": "#A1A1A1",
+    "shadow": "none",
+    "texture": "none"
+  }
+]

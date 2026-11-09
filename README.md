@@ -46,6 +46,17 @@ https://github.com/maicrobin1988-prog/TJ-text/tree/main/skills/interior-project-
 
 安装后用 `$interior-project-research` 提供项目名称和已有资料。也可单独导入 `skills/interior-project-research` 目录；本技能无须安装 TJ-text 演示文稿的 Python 依赖。网页、附件读取及飞书授权由使用者的运行环境提供，详见[使用与能力要求](skills/interior-project-research/README.md#运行能力与飞书交付)。
 
+## 室内彩平制作（InDesign / WorkBuddy）
+
+独立 Skill [`interior-colored-plan-indesign`](skills/interior-colored-plan-indesign/README.md) 先显示预存的五类八款简图，用户选择一次后，再依据平面 PDF 制作单款 InDesign A3 彩平与编号功能表。默认不为新 PDF 预先制作多款项目小样。
+
+- [源码及安装说明](skills/interior-colored-plan-indesign/README.md)
+- [发行版与可安装 ZIP](https://github.com/maicrobin1988-prog/TJ-text/releases/tag/interior-colored-plan-indesign-v2.1.0)
+- [WorkBuddy 专用 ZIP](https://github.com/maicrobin1988-prog/TJ-text/releases/download/interior-colored-plan-indesign-v2.1.0/interior-colored-plan-indesign-workbuddy.zip)：在 WorkBuddy 的技能界面选择“添加技能 → 上传技能”。
+- [通用目录 ZIP](https://github.com/maicrobin1988-prog/TJ-text/releases/download/interior-colored-plan-indesign-v2.1.0/interior-colored-plan-indesign-portable.zip)：供 Codex、CodeBuddy 及其他支持 SKILL.md 的工具使用。
+
+该技能可独立安装，无需 TJ-text 演示文稿依赖。选样仅使用预存图；正式制作需要使用者本机有 InDesign 和对应 Python 环境。公开内容只有方法、自制简图及通用模板，实际客户资料由使用者自行保管。
+
 ## What It Produces
 
 From a single project JSON file, TJ-text can generate:
